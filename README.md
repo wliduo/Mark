@@ -1,3 +1,3 @@
 # Mark
 
-* 采用背景雪花特效:[https://imjad.cn](https://imjad.cn)
+* 采用全屏背景:[https://gitee.com/wang926454/codes/lp4379tzrhjeiwbqxf1n540](https://gitee.com/wang926454/codes/lp4379tzrhjeiwbqxf1n540)
