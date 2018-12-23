@@ -26,8 +26,8 @@
     -webkit-background-size: cover;
     -o-background-size: cover;
     background-position: center 0;
-    opacity: 0.8;
-    filter: alpha(opacity = 80);
+    opacity: 0.5;
+    filter: alpha(opacity = 50);
 }
 
 .layui-tab-card>.layui-tab-title {

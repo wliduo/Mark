@@ -10,6 +10,11 @@
     <link rel="shortcut icon" href="https://wang64.cn/static/favicon.ico" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/layui-src@2.4.5/dist/css/layui.css" media="all">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="assets/waifu.min.css?v=1.4.2"/>
+    <!-- waifu-tips.js 依赖 JQuery 库 -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <!-- 实现拖动效果，需引入 JQuery UI -->
+    <script src="https://cdn.staticfile.org/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </head>
 
 <body>
@@ -39,128 +44,36 @@
         </div>
     </div>
     
-    <!-- Snow Start -->
-    <!-- <canvas id="Snow"></canvas>
-    <script async>
-        if (true) {
-            (function () {
-                var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame ||
-                    function (callback) {
-                        window.setTimeout(callback, 1000 / 60);
-                    };
-                window.requestAnimationFrame = requestAnimationFrame;
-            })();
-
-            (function () {
-                var flakes = [],
-                    canvas = document.getElementById("Snow"),
-                    ctx = canvas.getContext("2d"),
-                    flakeCount = 200,
-                    mX = -100,
-                    mY = -100;
-
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-
-                function snow() {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                    for (var i = 0; i < flakeCount; i++) {
-                        var flake = flakes[i],
-                            x = mX,
-                            y = mY,
-                            minDist = 150,
-                            x2 = flake.x,
-                            y2 = flake.y;
-
-                        var dist = Math.sqrt((x2 - x) * (x2 - x) + (y2 - y) * (y2 - y)),
-                            dx = x2 - x,
-                            dy = y2 - y;
-
-                        if (dist < minDist) {
-                            var force = minDist / (dist * dist),
-                                xcomp = (x - x2) / dist,
-                                ycomp = (y - y2) / dist,
-                                deltaV = force / 2;
-
-                            flake.velX -= deltaV * xcomp;
-                            flake.velY -= deltaV * ycomp;
-
-                        } else {
-                            flake.velX *= .98;
-                            if (flake.velY <= flake.speed) {
-                                flake.velY = flake.speed
-                            }
-                            flake.velX += Math.cos(flake.step += .05) * flake.stepSize;
-                        }
-
-                        ctx.fillStyle = "rgba(255,255,255," + flake.opacity + ")";
-                        flake.y += flake.velY;
-                        flake.x += flake.velX;
-
-                        if (flake.y >= canvas.height || flake.y <= 0) {
-                            reset(flake);
-                        }
-
-                        if (flake.x >= canvas.width || flake.x <= 0) {
-                            reset(flake);
-                        }
-
-                        ctx.beginPath();
-                        ctx.arc(flake.x, flake.y, flake.size, 0, Math.PI * 2);
-                        ctx.fill();
-                    }
-                    requestAnimationFrame(snow);
-                };
-
-                function reset(flake) {
-                    flake.x = Math.floor(Math.random() * canvas.width);
-                    flake.y = 0;
-                    flake.size = (Math.random() * 3) + 2;
-                    flake.speed = (Math.random() * 1) + 0.5;
-                    flake.velY = flake.speed;
-                    flake.velX = 0;
-                    flake.opacity = (Math.random() * 0.5) + 0.3;
-                }
-
-                function init() {
-                    for (var i = 0; i < flakeCount; i++) {
-                        var x = Math.floor(Math.random() * canvas.width),
-                            y = Math.floor(Math.random() * canvas.height),
-                            size = (Math.random() * 3) + 2,
-                            speed = (Math.random() * 1) + 0.5,
-                            opacity = (Math.random() * 0.5) + 0.3;
-
-                        flakes.push({
-                            speed: speed,
-                            velY: speed,
-                            velX: 0,
-                            x: x,
-                            y: y,
-                            size: size,
-                            stepSize: (Math.random()) / 30 * 1,
-                            step: 0,
-                            angle: 180,
-                            opacity: opacity
-                        });
-                    }
-
-                    snow();
-                };
-
-                document.addEventListener("mousemove", function (e) {
-                    mX = e.clientX,
-                        mY = e.clientY
-                });
-                window.addEventListener("resize", function () {
-                    canvas.width = window.innerWidth;
-                    canvas.height = window.innerHeight;
-                });
-                init();
-            })();
-        }
-    </script> -->
-    <!-- Snow End -->
+    <!-- Live2D Start -->
+    <div class="waifu">
+        <div class="waifu-tips"></div>
+        <canvas id="live2d" class="live2d"></canvas>
+        <div class="waifu-tool">
+            <span class="fui-home"></span>
+            <span class="fui-chat"></span>
+            <span class="fui-eye"></span>
+            <span class="fui-user"></span>
+            <span class="fui-photo"></span>
+            <span class="fui-info-circle"></span>
+            <span class="fui-cross"></span>
+        </div>
+    </div>
+        
+    <script src="assets/waifu-tips.min.js?v=1.4.2"></script>
+    <script src="assets/live2d.min.js?v=1.0.5"></script>
+    <script type="text/javascript">
+        /* 可直接修改部分参数 */
+        live2d_settings['modelId'] = 1;                  // 默认模型 ID
+        live2d_settings['modelTexturesId'] = 87;         // 默认材质 ID
+        live2d_settings['modelStorage'] = true;         // 不储存模型 ID
+        live2d_settings['canCloseLive2d'] = false;       // 隐藏 关闭看板娘 按钮
+        live2d_settings['canTurnToHomePage'] = false;    // 隐藏 返回首页 按钮
+        live2d_settings['waifuMinWidth'] = 'disable';    // 面页小于 指定宽度 隐藏看板娘，例如 'disable'(禁用), '768px'
+        live2d_settings['waifuEdgeSide'] = 'right:30';   // 看板娘贴边方向
+        /* 在 initModel 前添加 */
+        initModel("assets/waifu-tips.json?v=1.4.2")
+    </script>
+    <!-- Live2D End -->
     <script src="https://cdn.jsdelivr.net/npm/layui-src@2.4.5/dist/layui.js" charset="utf-8"></script>
     <script src="js/index.js" charset="utf-8"></script>
     <script>
