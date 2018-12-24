@@ -9,9 +9,9 @@
     <link rel="shortcut icon" href="https://wang64.cn/static/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="assets/waifu.min.css?v=1.4.2"/>
     <!-- waifu-tips.js 依赖 JQuery 库 -->
-    <script src="assets/jquery.min.js?v=3.3.1"></script>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <!-- 实现拖动效果，需引入 JQuery UI -->
-    <script src="assets/jquery-ui.min.js?v=1.12.1"></script>
+    <script src="https://cdn.staticfile.org/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </head>
 <body>
     
@@ -36,10 +36,12 @@
         live2d_settings['modelId'] = 1;                  // 默认模型 ID
         live2d_settings['modelTexturesId'] = 87;         // 默认材质 ID
         live2d_settings['modelStorage'] = true;         // 不储存模型 ID
-        live2d_settings['canCloseLive2d'] = false;       // 隐藏 关闭看板娘 按钮
         live2d_settings['canTurnToHomePage'] = false;    // 隐藏 返回首页 按钮
         live2d_settings['waifuDraggable'] = 'unlimited'; // 拖拽样式
         live2d_settings['waifuMinWidth'] = 'disable';    // 面页小于 指定宽度 隐藏看板娘，例如 'disable'(禁用), '768px'
+        live2d_settings['modelTexturesRandMode'] = 'switch';       // 材质切换，可选 'rand'(随机), 'switch'(顺序)
+        live2d_settings['aboutPageUrl'] = 'https://github.com/fghrsh/live2d_demo';   // 关于页地址
+        /* live2d_settings['waifuDraggableRevert'] = false; */         // 松开鼠标还原拖拽位置，可选 true(真), false(假)
         /* 在 initModel 前添加 */
         initModel("assets/waifu-tips.json?v=1.4.2")
     </script>
