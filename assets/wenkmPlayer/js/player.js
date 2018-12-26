@@ -104,7 +104,7 @@ if ((top.location != self.location)) {
 			wenkmLrc.lrc.hide();
 			hasLrc = false;
 			hasKsc = false;
-			$('#wenkmLrc,#wenkmKsc').html('');
+			$('#wenkmLrc, #wenkmKsc').html('');
 			setTimeout(function () {
 				if (hasgeci) {
 					$songFrom3.html('<i class="fa fa-check-circle"></i> 歌词' + songFrom33);
@@ -125,7 +125,7 @@ if ((top.location != self.location)) {
 					url: lrcurl,
 					success: function (lrctext) {
 						if (typeof (lrctext) == 'undefined') {
-							songFrom44 = ' - 暂无歌词!', $songFrom3.html('<i class="fa fa-times-circle"></i> 暂无歌词');
+							songFrom44 = ' - 暂无歌词', $songFrom3.html('<i class="fa fa-times-circle"></i> 暂无歌词');
 							$(".switch-ksclrc").hide();
 							$(".switch-down").css("right", "35px");
 							$(".switch-default").css("right", "65px");
@@ -133,14 +133,14 @@ if ((top.location != self.location)) {
 							if (lrctext.indexOf('[00') >= 0) {
 								setTimeout(function () {
 									if (!$('#wenkmLrc').hasClass('hide')) {
-										songFrom44 = ' - Lrc歌词获取成功!'
+										songFrom44 = ' - Lrc歌词获取成功'
 									} else {
-										songFrom44 = ' - Lrc歌词已关闭！'
+										songFrom44 = ' - Lrc歌词已关闭'
 									};
 									wenkmLrc.lrc.format(lrctext);
 								}, 500);
 							} else {
-								songFrom44 = ' - 暂无歌词!', $songFrom3.html('<i class="fa fa-times-circle"></i> 暂无歌词');
+								songFrom44 = ' - 暂无歌词', $songFrom3.html('<i class="fa fa-times-circle"></i> 暂无歌词');
 								$(".switch-ksclrc").hide();
 								$(".switch-down").css("right", "35px");
 								$(".switch-default").css("right", "65px");
@@ -274,7 +274,7 @@ if ((top.location != self.location)) {
 		error: function () {
 			clearInterval(cicleTime);
 			$player.removeClass('playing');
-			wenkmTips.show(aplist[songId].name + ' - 资源获取失败！');
+			wenkmTips.show(aplist[songId].artist + ' - ' + aplist[songId].name + ' - 资源获取失败');
 			setTimeout(function () {
 				$cover.removeClass('coverplay')
 			}, 1000);
@@ -350,7 +350,7 @@ if ((top.location != self.location)) {
 			// 当前专辑的歌曲列表高亮当前项
 			$('[data-album=' + albumId + ']').find('li').eq(songId).addClass(cur).find('.artist').html('暂停播放&nbsp;>&nbsp;').parent().siblings().removeClass(cur).find('.artist').html('').parent();
 		};
-		wenkmTips.show('暂停播放 - ' + aplist[songId].name);
+		wenkmTips.show('暂停播放 - ' + aplist[songId].artist + ' - ' + aplist[songId].name);
 		$cover.removeClass('coverplay');
 		audio.pause()
 	});
@@ -510,7 +510,7 @@ if ((top.location != self.location)) {
 					// 已选播放状态禁止点击
 					if ($(this).hasClass(cur)) {
 						$(".myhk_pjax_loading_frame,.myhk_pjax_loading").hide();
-						wenkmTips.show('正在播放 - ' + aplist[songId].name);
+						wenkmTips.show('正在播放 - ' + aplist[songId].artist + ' - ' + aplist[songId].name);
 					} else {
 						// 得到歌曲ID
 						songId = $(this).index();
@@ -535,7 +535,7 @@ if ((top.location != self.location)) {
 };
 function LimitStr(str, num, t) {
 	num = num || 6;
-	// 限制字符数默认为9个，注意，两个英文字符，算一个！！！
+	// 限制字符数默认为9个，注意，两个英文字符，算一个！
 	t = t || '...';
 	// 默认在末尾加上省略号
 	var re = '';
@@ -554,7 +554,7 @@ function netmusic() {
 	audio.src = aplist[songId].url;
 	lrcurl = aplist[songId].lrc;
 	// 歌曲名称
-	$songName.html('<span title="' + aplist[songId].name + '">' + LimitStr(aplist[songId].name + '</span>'));
+	$songName.html('<span title="' + aplist[songId].artist + ' - ' + aplist[songId].name + '">' + LimitStr(aplist[songId].name + '</span>'));
 	// 歌手及专辑
 	$songFrom.html('<span title="' + aplist[songId].artist + '">' + LimitStr(aplist[songId].artist) + '</span>');
 	$songFrom1.html('<span title="' + aplist[songId].artist + '">' + LimitStr(aplist[songId].artist) + '</span>');
@@ -569,7 +569,8 @@ function netmusic() {
 		}, 800);
 		setTimeout(function () {
 			$cover.removeClass('changing');
-		}, 100); $.ajax({
+		}, 100); 
+		$.ajax({
 			url: 'https://free.limh.me/api/colorapi.php',
 			type: 'GET',
 			dataType: 'script',
@@ -589,7 +590,7 @@ function netmusic() {
 		}, 800);
 		coverImg.src = "https://wang926454.gitee.io/reader/Image/headt.png";
 		setTimeout(function () {
-			wenkmTips.show(aplist[songId].name + ' - 专辑图片获取失败！');
+			wenkmTips.show(aplist[songId].artist + ' - ' + aplist[songId].name + ' - 图片获取失败');
 		}, 4000);
 	};
 	$cover.html(coverImg);
