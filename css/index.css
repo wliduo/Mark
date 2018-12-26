@@ -11,6 +11,15 @@
 }
 /* Snow End */
 
+body {
+    /* 隐藏滚动条 */
+    /* overflow-x: hidden;     
+    overflow-y: hidden; */
+    overflow: hidden;
+    /* 鼠标默认显示 */
+    cursor: url(https://note.wang64.cn/images/cursor.ico), auto;
+}
+
 #web_bg {
     position: fixed;
     top: 0;
