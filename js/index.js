@@ -1,3 +1,22 @@
+// PC端返回false
+function isMobile() {
+    var viewType = navigator.userAgent.toLowerCase();
+    console.log(viewType);
+    return viewType.match(/(phone|pad|pod|midp|iphone|ipod|iphone os|ios|ipad|android|mobile|blackberry|iemobile|mqqbrowser|juc|rv:1.2.3.4|ucweb|fennec|wosbrowser|browserng|webos|symbian|windows ce|windows mobile|windows phone)/i);
+}
+
+if (isMobile()) {
+    // 隐藏wenkmPlayerc
+    document.getElementById('wenkmPlayer').style.display = 'none';
+} else {
+    try {
+      // 加载wenkmPlayerc
+      $.ajax({ url: 'https://mark.wang64.cn/assets/wenkmPlayer/js/player.js?v=123', dataType: "script", cache: true, async: false });
+    } catch (err) {
+      console.log('[Error] JQuery is not defined.')
+    }
+}
+
 var imageUrls = ['https://wang926454.gitee.io/reader/Image/201810/normal/20010.png',
                     'https://wang926454.gitee.io/reader/Image/201811/normal/02015.png',
                     'https://wang926454.gitee.io/reader/Image/201811/normal/05020.png',
