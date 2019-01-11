@@ -1,53 +1,200 @@
-/* Snow Start */
-#Snow {
-    position: fixed;
-    top: 0;
+@media screen and (min-width: 600px) {
+    /* Hitokoto Page */
+    .hitokoto-fullpage {
+        width: 55%;
+    }
+    .background{
+        -webkit-filter: brightness(0.6);
+        -ms-filter: brightness(0.6);
+        -moz-filter: brightness(0.6);
+        filter: brightness(0.6);
+        position:absolute;
+        width:100%;
+        height:100%;
+        z-index:-1;
+        background:url(https://wang926454.gitee.io/reader/Image/201812/normal/23005.png) center no-repeat;
+        background-size:cover;
+
+    }
+    /* Content Style */
+    .hitokoto-content {
+        /*border-radius: 2px;*/
+        padding: 80px 56px;
+        margin-bottom: 80px;
+    }
+    /*Api Introduction Page*/
+    .apitable{
+        border-collapse: collapse;
+    }
+    .apitable>tbody>tr>td , .apitable>tbody>tr>th{
+        border:1px   solid  #d7d7d7;
+    }
+}
+@media screen and (max-width: 600px) {
+    .mdl-layout__drawer-button {
+        color: #fff;
+    }
+    .apitable{
+        border-collapse: collapse;
+    }
+    .apitable>td,.apitable>th{
+        border:1px   solid  #d7d7d7;
+    }
+    /* Hitokoto Page */
+    .hitokoto-fullpage {
+        margin-bottom: 10vh !important;
+    }
+
+    .hitokoto-fullpage .word {
+        line-height: 2.6rem !important;
+    }
+
+    .background{
+        -webkit-filter: brightness(0.6);
+        filter: brightness(0.6);
+        position:absolute;
+        width:100%;
+        height:100%;
+        z-index:-1;
+        background:url(https://wang926454.gitee.io/reader/Image/201901/normal/11005.png) center no-repeat;
+        background-size:cover;
+    }
+    /* Content Style */
+    .hitokoto-content {
+        /*border-radius: 2px;*/
+        padding: 20px;
+    }
+
+}
+/* Hitokoto Page */
+.hitokoto-fullpage {
+    position: relative;
+    color: white;
+    z-index: 1;
+    margin-top: 35vh;
+    margin-bottom: 35vh;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '寰蒋闆呴粦', Arial, sans-serif;
+}
+
+.hitokoto-fullpage .bracket {
+    font-size: 30px;
+}
+
+.hitokoto-fullpage .bracket.left {
+    position: absolute;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 99999;
-    background: rgba(125, 137, 95, 0.1);
-    pointer-events: none;
-}
-/* Snow End */
-
-body {
-    /* 隐藏滚动条 */
-    /* overflow-x: hidden;     
-    overflow-y: hidden; */
-    overflow: hidden;
-    /* 鼠标默认显示 */
-    cursor: url(https://note.wang64.cn/images/cursor.ico), auto;
-}
-
-#web_bg {
-    position: fixed;
     top: 0;
-    left: 0;
+}
+
+.hitokoto-fullpage .bracket.right {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.hitokoto-fullpage .word {
+    font-size: 2.3rem;
+    text-align: center;
+    line-height: 50px;
+    word-break: normal;
+    margin: 0;
+    padding: 15px 50px;
+}
+
+.hitokoto-fullpage .author {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    float: right;
+    margin-top: 40px;
+}
+
+/* About Page */
+header{
+    box-shadow:0px 0px 3px #000000;
+}
+.hitokoto-ribbon {
     width: 100%;
-    height: 100%;
-    min-width: 1000px;
-    z-index: -10;
-    zoom: 1;
-    /* background-image: url("https://wang926454.gitee.io/reader/Image/201810/normal/20010.png"); */
-    background-repeat: no-repeat;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -o-background-size: cover;
-    background-position: center 0;
-    opacity: 0.5;
-    filter: alpha(opacity = 50);
+    height: 25vh;
+    background-color: #3F51B5;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
 }
 
-.layui-tab-card>.layui-tab-title {
-    background-color: #ffffff00;
+.hitokoto-main {
+    margin-top: -20vh;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
 }
 
-.layui-tab-card>.layui-tab-title .layui-this {
-    background-color: rgba(255, 255, 255, 0.5);
+.hitokoto-container {
+    max-width: 1800px;
+    width: calc(100% - 16px);
+    margin: 20px auto 20px auto;
 }
 
-.layui-tab-content {
-    /* background-color: #ffffff; */
-    height: auto;
+.hitokoto-container .mdl-shadow--2dp,
+.hitokoto-container .mdl-cell--8-col {
+  margin: 0 auto;
 }
+
+.hitokoto-container .mdl-cell--2-col {
+  display: none;
+}
+
+.hitokoto-layout.is-small-screen .demo-content {
+    padding: 40px 28px;
+}
+
+.hitokoto-footer .mdl-mini-footer--link-list a {
+    font-size: 13px;
+}
+
+.ticket-table tr td p {
+    margin: 0;
+    line-height: 0px;
+}
+
+.uploaded {
+    height: 150px;
+    margin: 0 10px 0 0;
+    box-shadow: 0 0 10px #CCC;
+}
+
+.pd-30 {
+    padding: 30px;
+}
+
+.expanded {
+    width: 100%;
+}
+
+.progress-wrap {
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.picbox {
+    padding-top:0;
+    padding-bottom:10px;
+}
+
+.fix-reply-container {
+    max-width: 1250px;
+    margin: 0;
+}
+
+.fix-reply-container p {
+    width: 100%;
+}
+/*Api Introduction Page*/
+.apitable{
+    border-collapse: collapse;
+}
+.apitable>tbody>tr>td , .apitable>tbody>tr>th{
+    border:1px   solid  #d7d7d7;
+}
+/* Login & Register Page */

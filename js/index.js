@@ -1,20 +1,109 @@
-// PC端返回false
-function isMobile() {
-    var viewType = navigator.userAgent.toLowerCase();
-    console.log(viewType);
-    return viewType.match(/(phone|pad|pod|midp|iphone|ipod|iphone os|ios|ipad|android|mobile|blackberry|iemobile|mqqbrowser|juc|rv:1.2.3.4|ucweb|fennec|wosbrowser|browserng|webos|symbian|windows ce|windows mobile|windows phone)/i);
+// CheckOS
+var os = function () {
+    var ua = navigator.userAgent,
+        isWindowsPhone = /(?:Windows Phone)/.test(ua),
+        isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone,
+        isAndroid = /(?:Android)/.test(ua),
+        isFireFox = /(?:Firefox)/.test(ua),
+        isChrome = /(?:Chrome|CriOS)/.test(ua),
+        isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox &&
+            /(?:Tablet)/.test(ua)),
+        isPhone = /(?:iPhone)/.test(ua) && !isTablet,
+        isPc = !isPhone && !isAndroid && !isSymbian;
+    return {
+        isTablet: isTablet,
+        isPhone: isPhone,
+        isAndroid: isAndroid,
+        isPc: isPc
+    };
+}();
+console.log(os);
+
+const aplayer = new APlayer({
+    container: document.getElementById('aplayer'),
+    fixed: true,
+    lrcType: 3,
+    order: 'random',
+    theme: '#000000',
+    volume: 2.0,
+    audio: getLove()
+});
+
+if (!os.isPc) {
+    aplayer.lrc.toggle();
+    $(".aplayer-icon-lrc").addClass("aplayer-icon-lrc-inactivity");
 }
 
-if (isMobile()) {
-    // 隐藏wenkmPlayerc
-    document.getElementById('wenkmPlayer').style.display = 'none';
-} else {
-    try {
-      // 加载wenkmPlayerc
-      $.ajax({ url: 'https://mark.wang64.cn/assets/wenkmPlayer/js/player.js?v=123', dataType: "script", cache: true, async: false });
-    } catch (err) {
-      console.log('[Error] JQuery is not defined.')
-    }
+// Animate
+$.fn.extend({
+    animateCss: function (animationName, callback) {
+        var animationEnd = (function (el) {
+            var animations = {
+                animation: 'animationend',
+                OAnimation: 'oAnimationEnd',
+                MozAnimation: 'mozAnimationEnd',
+                WebkitAnimation: 'webkitAnimationEnd',
+            };
+
+            for (var t in animations) {
+                if (el.style[t] !== undefined) {
+                    return animations[t];
+                }
+            }
+        })(document.createElement('div'));
+
+        this.addClass('animated ' + animationName).one(animationEnd, function () {
+            $(this).removeClass('animated ' + animationName);
+
+            if (typeof callback === 'function') callback();
+        });
+
+        return this;
+    },
+});
+
+function loveHitokoto() {
+    fetch("https://v1.hitokoto.cn?encode=json")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            fetch("https://hitokoto.cn/getLike?ID=" + data.id)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (result) {
+                    // Update Like
+                    $("#like_number1").attr("data-badge", result.data.total);
+                    $("#like_number2").attr("data-badge", result.data.total);
+
+                    if ($('#hitokoto').hasClass("animated")) {
+                        $('#hitokoto').removeClass("animated");
+                        $('#hitokoto').removeClass("fadeIn");
+                    }
+                    $('#hitokoto').animateCss('bounce');
+                    $('#hitokoto_text').text(data.hitokoto);
+                    var author = !!data.from ? data.from : "无名氏"
+                    $('#hitokoto_author').text("-「" + author + "」");
+                    window.setTimeout(loveHitokoto, 3000);
+                })
+                .catch(function (err) {
+                    console.error(`在更新一言时捕获错误， 错误信息: ${err.message}. 当前时间: ${new Date().toISOString()}`);
+                    loveHitokoto();
+                });
+        })
+        .catch(function (err) {
+            console.error(`在更新一言时捕获错误， 错误信息: ${err.message}. 当前时间: ${new Date().toISOString()}`);
+            loveHitokoto();
+        });
+}
+
+loveHitokoto();
+// window.setTimeout(loveHitokoto, 200);
+
+// 跳转
+function bookmarks() {
+    window.location.href = "https://mark.wang64.cn/bookmarks";
 }
 
 var imageUrls = ['https://wang926454.gitee.io/reader/Image/201810/normal/20010.png',
@@ -36,39 +125,36 @@ var imageUrls = ['https://wang926454.gitee.io/reader/Image/201810/normal/20010.p
                     'https://wang926454.gitee.io/reader/Image/201811/normal/04060.png',
                     'https://wang926454.gitee.io/reader/Image/201811/normal/05010.png',
                     'https://wang926454.gitee.io/reader/Image/201811/normal/05015.png',
-                    'https://wang926454.gitee.io/reader/Image/201811/normal/05025.png'];
-var indexImage = document.getElementById('web_bg');
-var img = new Image();
-var url = imageUrls[Math.floor(imageUrls.length * Math.random())];
+                    'https://wang926454.gitee.io/reader/Image/201811/normal/05025.png',
+                    'https://wang926454.gitee.io/reader/Image/201901/normal/11010.png'];
+
+function back() {
+    var indexImage = document.getElementsByClassName('background');
+    var img = new Image();
+    var url = imageUrls[Math.floor(imageUrls.length * Math.random())];
     img.src = url;
     img.onload = function () {
-    indexImage.style.backgroundImage = "url(" + url + ")";
+    indexImage[0].style.backgroundImage = "url(" + url + ")";
+    }
 }
 
-layui.use('element', function () {
-    var $ = layui.jquery
-        // Tab的切换功能，切换事件监听等，需要依赖element模块
-        , element = layui.element;
+var num = 0;
+function back2() {
+    if (os.isPc) {
+        var url = "https://wang926454.gitee.io/reader/Image/201812/normal/23005.png";
+        if (num == 0) {
+            num = 1;
+        } else {
+            url = "https://wang926454.gitee.io/reader/Image/201812/normal/21005.png";
+            num = 0;
+        }
+        var indexImage = document.getElementsByClassName('background');
+        var img = new Image();
+        img.src = url;
+        img.onload = function () {
+            indexImage[0].style.backgroundImage = "url(" + url + ")";
+        };
+    }
+}
 
-    // 触发事件
-    var active = {
-        tabAdd: function () {
-            // 新增一个Tab项
-            element.tabAdd('demo', {
-                title: '新选项' + (Math.random() * 1000 | 0),
-                content: '内容' + (Math.random() * 1000 | 0),
-                // 实际使用一般是规定好的id，这里以时间戳模拟下
-                id: new Date().getTime()
-            })
-        }
-        , tabDelete: function (othis) {
-            // 删除指定Tab项
-            element.tabDelete('demo', '44');
-            othis.addClass('layui-btn-disabled');
-        }
-        , tabChange: function () {
-            // 切换到指定Tab项
-            element.tabChange('demo', '22');
-        }
-    };
-});
+// window.setTimeout(back, 1500);

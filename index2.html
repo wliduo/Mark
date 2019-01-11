@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>书签</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="https://wang64.cn/static/favicon.ico" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/layui-src@2.4.5/dist/css/layui.css" media="all">
+    <link rel="stylesheet" href="css/index2.css">
+    <!-- Live2D Start -->
+    <link rel="stylesheet" type="text/css" href="https://www.fghrsh.net/zb_users/plugin/live2d/assets/waifu.min.css"/>
+    <!-- Live2D End -->
+    <link rel="stylesheet" href="assets/wenkmPlayer/css/player.css?v=0914">
+	<link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- waifu-tips.js 依赖 JQuery 库 -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="web_bg"></div>
+
+    <div id="main" class="layui-container">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+            <legend>我的书签</legend>
+        </fieldset>
+
+        <div class="layui-tab layui-tab-card">
+            <ul class="layui-tab-title">
+                <li class="layui-this">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show" onclick="bookmarks()">正在建造中...</div>
+                <div class="layui-tab-item">2</div>
+                <div class="layui-tab-item">3</div>
+                <div class="layui-tab-item">4</div>
+                <div class="layui-tab-item">5</div>
+                <div class="layui-tab-item">6</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- wenkmPlayer Start -->
+    <div id="wenkmPlayer">
+		<div class="player">
+			<div class="infos">
+				<div class="songstyle">
+					<i class="fa fa-music">
+					</i>
+					<span class="song">
+					</span>
+				</div>
+				<div class="timestyle">
+					<i class="fa fa-clock-o">
+					</i>
+					<span class="time">
+						00:00 / 00:00
+					</span>
+				</div>
+				<div class="artiststyle">
+					<i class="fa fa-user">
+					</i>
+					<span class="artist">
+					</span>
+					<span class="moshi">
+						<i class="loop fa fa-random current">
+						</i>
+						随机播放
+					</span>
+				</div>
+				<div class="artiststyle">
+					<i class="fa fa-folder">
+					</i>
+					<span class="artist1">
+					</span>
+					<span class="geci">
+					</span>
+				</div>
+			</div>
+			<div class="control">
+				<i class="loop fa fa-retweet" title="顺序播放">
+				</i>
+				<i class="prev fa fa-backward" title="上一首">
+				</i>
+				<div class="status">
+					<b>
+						<i class="play fa fa-play" title="播放">
+						</i>
+						<i class="pause fa fa-pause" title="暂停">
+						</i>
+					</b>
+				</div>
+				<i class="next fa fa-forward" title="下一首">
+				</i>
+				<i class="random fa fa-random current" title="随机播放">
+				</i>
+			</div>
+			<div class="musicbottom">
+				<div class="volume">
+					<i class="mute fa fa-volume-off">
+					</i>
+					<i class="volumeup fa fa-volume-up">
+					</i>
+					<div class="progress">
+						<div class="volume-on ts5">
+							<div class="drag" title="音量">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="switch-playlist">
+					<i class="fa fa-bars" title="播放列表">
+					</i>
+				</div>
+				<div class="switch-ksclrc">
+					<i class="fa fa-toggle-on" title="关闭歌词">
+					</i>
+				</div>
+				<div class="switch-default">
+					<i class="fa fa-refresh" title="切换默认专辑">
+					</i>
+				</div>
+			</div>
+			<div class="cover">
+			</div>
+		</div>
+		<div class="playlist">
+			<div class="playlist-bd">
+				<div class="album-list">
+					<div class="musicheader">
+					</div>
+					<div class="list">
+					</div>
+				</div>
+				<div class="song-list">
+					<div class="musicheader">
+						<span>
+						</span>
+					</div>
+					<div class="list">
+						<ul>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="switch-player">
+			<i class="fa fa-angle-right" style="margin-top: 20px;">
+			</i>
+		</div>
+	</div>
+	<div id="wenkmTips"></div>
+	<div id="wenkmLrc"></div>
+	<div class="myhk_pjax_loading_frame"></div>
+    <div class="myhk_pjax_loading"></div>
+    <script type="text/javascript" src="https://wang926454.gitee.io/reader/JS/aplist.js"></script>
+	<script src="assets/wenkmPlayer/js/mousewheel.js" type="text/javascript"></script>
+	<script src="assets/wenkmPlayer/js/scrollbar.js" type="text/javascript"></script>
+    <!-- wenkmPlayer End -->
+
+    <!-- Live2D Start -->
+    <div class="waifu">
+        <div class="waifu-tips"></div>
+        <canvas id="live2d" class="live2d"></canvas>
+        <div class="waifu-tool">
+            <span class="fui-home"></span>
+            <span class="fui-chat"></span>
+            <span class="fui-eye"></span>
+            <span class="fui-user"></span>
+            <span class="fui-photo"></span>
+            <span class="fui-info-circle"></span>
+            <span class="fui-cross"></span>
+        </div>
+    </div>
+        
+    <script src="https://www.fghrsh.net/zb_users/plugin/live2d/assets/waifu-tips.min.js"></script>
+    <script src="https://www.fghrsh.net/zb_users/plugin/live2d/assets/live2d.min.js"></script>
+    <script type="text/javascript">
+        /* 可直接修改部分参数 */
+        live2d_settings['modelId'] = 6;                  // 默认模型 ID
+        live2d_settings['modelTexturesId'] = 2;         // 默认材质 ID
+        live2d_settings['modelStorage'] = true;         // 不储存模型 ID
+        live2d_settings['canTurnToHomePage'] = false;    // 隐藏 返回首页 按钮
+        live2d_settings['waifuMinWidth'] = 'disable';    // 面页小于 指定宽度 隐藏看板娘，例如 'disable'(禁用), '768px'
+        live2d_settings['aboutPageUrl'] = 'https://github.com/fghrsh/live2d_demo';   // 关于页地址
+        live2d_settings['waifuEdgeSide'] = 'right:30';   // 看板娘贴边方向
+        /* 在 initModel 前添加 */
+        initModel("https://www.fghrsh.net/zb_users/plugin/live2d/assets/waifu-tips.json?v=1.4.2");
+
+		function bookmarks() {
+			window.location.href = "https://mark.wang64.cn/bookmarks";
+		}
+    </script>
+    <!-- Live2D End -->
+    <script src="https://cdn.jsdelivr.net/npm/layui-src@2.4.5/dist/layui.js" charset="utf-8"></script>
+    <script src="js/index2.js" charset="utf-8"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?1826dd4e676f6c917705c5632139f6dd";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <!-- 页面点击小红心 -->
+    <script type="text/javascript" src="https://wang926454.gitee.io/reader/JS/love.js"></script>
+</body>
+
+</html>
