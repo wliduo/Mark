@@ -29,6 +29,19 @@
     .apitable>tbody>tr>td , .apitable>tbody>tr>th{
         border:1px   solid  #d7d7d7;
     }
+
+    .hitokoto-fullpage .bracket {
+        font-size: 25px;
+    }
+
+    .hitokoto-fullpage .word {
+        font-size: 1.75rem;
+    }
+    
+    .hitokoto-fullpage .author {
+        font-size: 16px;
+    }
+    
 }
 @media screen and (max-width: 600px) {
     .mdl-layout__drawer-button {
@@ -65,6 +78,19 @@
         padding: 20px;
     }
 
+    .hitokoto-fullpage .bracket {
+        font-size: 20px;
+    }
+
+    .hitokoto-fullpage .word {
+        font-size: 1.5rem;
+    }
+    
+    .hitokoto-fullpage .author {
+        font-size: 14px;
+    }
+    
+
 }
 /* Hitokoto Page */
 .hitokoto-fullpage {
@@ -76,10 +102,6 @@
     margin-left: auto;
     margin-right: auto;
     font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '寰蒋闆呴粦', Arial, sans-serif;
-}
-
-.hitokoto-fullpage .bracket {
-    font-size: 30px;
 }
 
 .hitokoto-fullpage .bracket.left {
@@ -95,7 +117,6 @@
 }
 
 .hitokoto-fullpage .word {
-    font-size: 2.3rem;
     text-align: center;
     line-height: 50px;
     word-break: normal;
@@ -104,7 +125,6 @@
 }
 
 .hitokoto-fullpage .author {
-    font-size: 20px;
     color: rgba(255, 255, 255, 0.8);
     float: right;
     margin-top: 40px;
@@ -147,10 +167,6 @@ header{
 
 .hitokoto-layout.is-small-screen .demo-content {
     padding: 40px 28px;
-}
-
-.hitokoto-footer .mdl-mini-footer--link-list a {
-    font-size: 13px;
 }
 
 .ticket-table tr td p {
