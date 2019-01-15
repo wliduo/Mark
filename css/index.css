@@ -30,12 +30,17 @@
         border:1px   solid  #d7d7d7;
     }
 
+    .hitokoto-fullpage .word {
+        line-height: 2.5rem !important;
+    }
+
     .hitokoto-fullpage .bracket {
         font-size: 25px;
     }
 
     .hitokoto-fullpage .word {
         font-size: 1.75rem;
+        padding: 15px 50px;
     }
     
     .hitokoto-fullpage .author {
@@ -59,7 +64,7 @@
     }
 
     .hitokoto-fullpage .word {
-        line-height: 2.6rem !important;
+        line-height: 2.0rem !important;
     }
 
     .background{
@@ -75,7 +80,7 @@
     /* Content Style */
     .hitokoto-content {
         /*border-radius: 2px;*/
-        padding: 20px;
+        padding: 15px;
     }
 
     .hitokoto-fullpage .bracket {
@@ -84,6 +89,7 @@
 
     .hitokoto-fullpage .word {
         font-size: 1.5rem;
+        padding: 10px 35px;
     }
     
     .hitokoto-fullpage .author {
@@ -121,13 +127,12 @@
     line-height: 50px;
     word-break: normal;
     margin: 0;
-    padding: 15px 50px;
 }
 
 .hitokoto-fullpage .author {
     color: rgba(255, 255, 255, 0.8);
     float: right;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 /* About Page */
