@@ -11,10 +11,15 @@ li,ul{margin:0;padding:0;list-style:none}
 #wenkmPlayer .player .infos a{color:#fff}
 #wenkmPlayer .player .infos a:hover{color:#0c0}
 #wenkmPlayer .player .infos .artiststyle{margin-top:20px}
-#wenkmPlayer .player .infos .moshi{float:right}
 #wenkmPlayer .player .infos .geci{float:right}
 #wenkmPlayer .player .infos .timestyle{float:right;margin-top:-15px;left:5px;right:5px;}
-#wenkmPlayer .player .control{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;bottom:-110px;left:5px;text-shadow:none;position:relative;z-index:99999;font-size:1.8em;color:#fff}
+#wenkmPlayer .player .infos .artiststyle .moshi{float:right}
+#wenkmPlayer .player .infos .artiststyle .moshi1{margin-left:3.8px}
+#wenkmPlayer .player .infos .songstyle .song{margin-left:3.8px}
+#wenkmPlayer .player .infos .timestyle .time{margin-left:3.8px}
+#wenkmPlayer .player .infos .artiststyle .artist{margin-left:3.8px}
+#wenkmPlayer .player .infos .artiststyle .artist1{margin-left:3.8px}
+#wenkmPlayer .player .control{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;bottom:-110px;left:18.8px;text-shadow:none;position:relative;z-index:99999;font-size:1.8em;color:#fff}
 #wenkmPlayer .player .control .loop,#wenkmPlayer .player .control .next,#wenkmPlayer .player .control .prev,#wenkmPlayer .player .control .random{left:30px;margin-right:32px;cursor:url(link.cur),pointer}
 #wenkmPlayer .player .control i.current{color:#81c300}
 #wenkmPlayer .player .control .next{position:relative;display:inline-block;vertical-align:middle}
@@ -30,13 +35,13 @@ li,ul{margin:0;padding:0;list-style:none}
 #wenkmPlayer .player .control .status b .play{color:#f30;-webkit-transition:.5s;-moz-transition:.5s;-ms-transition:.5s;transition:.5s}
 #wenkmPlayer .player .control .status b .play:hover{color:#81c300}
 #wenkmPlayer .player .musicbottom{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;position:absolute;background-color:#fff;text-shadow:none;height:25px;width:100%;left:0;bottom:0;line-height:25px}
-#wenkmPlayer .player .musicbottom .volume{position:absolute;left:6px;top:6px;color:#cccbce}
+#wenkmPlayer .player .musicbottom .volume{position:absolute;left:6px;top:7px;color:#cccbce}
 #wenkmPlayer .player .musicbottom .volume .mute{float:left}
 #wenkmPlayer .player .musicbottom .volume .volumeup{float:right}
 #wenkmPlayer .player .musicbottom .volume .progress{position:relative;width:145px;margin:0 15px;margin-top:4.5px;height:3px;background-color:#b0aeb2}
 #wenkmPlayer .player .musicbottom .volume .progress .volume-on{position:relative;background-color:#81c300;width:0;height:3px}
 #wenkmPlayer .player .musicbottom .volume .progress .volume-on .drag{width:14px;height:14px;position:absolute;top:-5px;right:-5px;background-color:#fff;border-radius:50%;box-shadow:0 0 1px 1px rgba(0,0,0,.2);cursor:url(link.cur),pointer}
-#wenkmPlayer .player .musicbottom .switch-playlist{position:absolute;-webkit-transition:.5s;-moz-transition:.5s;-ms-transition:.5s;transition:.5s;top:6px;line-height:10px;right:10px;cursor:url(link.cur),pointer}
+#wenkmPlayer .player .musicbottom .switch-playlist{position:absolute;-webkit-transition:.5s;-moz-transition:.5s;-ms-transition:.5s;transition:.5s;top:7px;line-height:10px;right:10px;cursor:url(link.cur),pointer}
 #wenkmPlayer .player .musicbottom .switch-playlist:hover{color:#81c300}
 #wenkmPlayer .player .musicbottom .switch-ksclrc{position:absolute;-webkit-transition:.5s;-moz-transition:.5s;-ms-transition:.5s;transition:.5s;top:6px;line-height:10px;right:35px;font-size:1.2em;cursor:url(link.cur),pointer}
 #wenkmPlayer .player .musicbottom .switch-ksclrc:hover{color:#81c300}
