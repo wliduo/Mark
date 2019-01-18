@@ -62,40 +62,33 @@ $.fn.extend({
     },
 });
 
-function loveHitokoto() {
-    fetch("https://v1.hitokoto.cn?encode=json")
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            fetch("https://hitokoto.cn/getLike?ID=" + data.id)
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (result) {
-                    // Update Like
-                    $("#like_number1").attr("data-badge", result.data.total);
-                    $("#like_number2").attr("data-badge", result.data.total);
+// 获取当前时间
+function getNowFormatDate() {
+    var date = new Date();
+    var seconds = date.getSeconds();
+    return String(seconds).length < 2 ? (seconds = "0" + seconds) : seconds;
+}
 
-                    if ($('#hitokoto').hasClass("animated")) {
-                        $('#hitokoto').removeClass("animated");
-                        $('#hitokoto').removeClass("fadeIn");
-                    }
-                    $('#hitokoto').animateCss('bounce');
-                    $('#hitokoto_text').text(data.hitokoto);
-                    var author = !!data.from ? data.from : "无名氏"
-                    $('#hitokoto_author').text("-「" + author + "」");
-                    window.setTimeout(loveHitokoto, 3000);
-                })
-                .catch(function (err) {
-                    console.error(`在更新一言时捕获错误， 错误信息: ${err.message}. 当前时间: ${new Date().toISOString()}`);
-                    loveHitokoto();
-                });
-        })
-        .catch(function (err) {
-            console.error(`在更新一言时捕获错误， 错误信息: ${err.message}. 当前时间: ${new Date().toISOString()}`);
-            loveHitokoto();
-        });
+function loveHitokoto() {
+    fetch("https://v1.hitokoto.cn?encode=json").then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        var secondsTemp = getNowFormatDate();
+        $("#like_number1").attr("data-badge", secondsTemp);
+        $("#like_number2").attr("data-badge", secondsTemp);
+        if ($('#hitokoto').hasClass("animated")) {
+            $('#hitokoto').removeClass("animated");
+            $('#hitokoto').removeClass("fadeIn");
+        }
+        $('#hitokoto').animateCss('bounce');
+        $('#hitokoto_text').text(data.hitokoto);
+        var author = !!data.from ? data.from : "无名氏"
+        $('#hitokoto_author').text("-「" + author + "」");
+        window.setTimeout(loveHitokoto, 8888);
+    }).catch(function (err) {
+        console.error(`在更新一言时捕获错误， 错误信息: ${err.message}. 当前时间: ${new Date().toISOString()}`);
+        loveHitokoto();
+    });
 }
 
 loveHitokoto();
