@@ -96,7 +96,7 @@ loveHitokoto();
 
 // 跳转
 function bookmarks() {
-    window.location.href = "https://mark.wang64.cn/bookmarks";
+    window.open("https://mark.wang64.cn/bookmarks");
 }
 
 var imageUrls = ['https://wang926454.gitee.io/reader/Image/201810/normal/20010.png',
