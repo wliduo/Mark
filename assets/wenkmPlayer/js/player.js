@@ -29,6 +29,9 @@ var div = document.createElement("div");
 div.setAttribute("class", "myhk_pjax_loading");
 parent.appendChild(div);
 
+// 第一次打印歌曲信息
+var startIndex = true;
+
 jQuery.cookie = function (name, value, options) {
 	if (typeof value != 'undefined') { // name and value given, set cookie
 		options = options || {};
@@ -575,7 +578,10 @@ function LimitStr(str, num, t) {
 }
 
 function netmusic() {
-	console.log(aplist[songId]);
+	if (startIndex) {
+		console.log(aplist[songId]);
+		startIndex = false;
+	}
 	audio.src = aplist[songId].url;
 	lrcurl = aplist[songId].lrc;
 	// 歌曲名称
@@ -621,17 +627,18 @@ function netmusic() {
 	$cover.html(coverImg);
 	// 设置音量
 	audio.volume = volume;
-	wenkmTips.show('开始播放 - ' + aplist[songId].artist + ' - ' + aplist[songId].name);
 	// 开始播放
+	wenkmTips.show('开始播放 - ' + aplist[songId].artist + ' - ' + aplist[songId].name);
 	playPromise = audio.play();
 	if (playPromise) {
 		playPromise.then(() => {
 			// 音频加载成功，音频的播放需要耗时
-			var t = audio.duration;
-			console.log('当前播放：' + aplist[songId].artist + ' - ' + aplist[songId].name + ' 时长：' + Math.floor(t / 60) + ":" + (t % 60 / 100).toFixed(2).slice(-2));
+			// var t = audio.duration;
+			// console.log('当前播放 - ' + aplist[songId].artist + ' - ' + aplist[songId].name + ' - ' + Math.floor(t / 60) + ":" + (t % 60 / 100).toFixed(2).slice(-2));
 		}).catch((e) => {
-			// 音频加载失败
-			console.log("浏览器限制自动播放，需要点击播放");
+			// 音频加载出现问题
+			wenkmTips.show('浏览器限制音乐自动播放(需要点击播放) - ' + aplist[songId].artist + ' - ' + aplist[songId].name);
+			console.log('浏览器限制音乐自动播放(需要点击播放)');
 		});
 	}
 	//获取LRC
