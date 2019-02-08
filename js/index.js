@@ -25,7 +25,6 @@ const aplayer = new APlayer({
     lrcType: 3,
     order: 'random',
     theme: '#000000',
-    volume: 2.0,
     audio: getLove()
 });
 
