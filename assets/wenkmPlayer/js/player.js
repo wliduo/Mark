@@ -10,7 +10,7 @@ var parent = document.getElementById('wangPlayer');
 // 添加wenkmPlayer
 var div = document.createElement("div");
 div.setAttribute("id", "wenkmPlayer");
-div.innerHTML = '<div class="player"><div class="infos"><div class="songstyle"><i class="fa fa-music"></i><span class="song"></span></div><div class="timestyle"><i class="fa fa-clock-o"></i><span class="time">00:00/00:00</span></div><div class="artiststyle"><i class="fa fa-user"></i><span class="artist"></span><span class="moshi"><i class="loop fa fa-random current"></i><span class="moshi1">随机播放</span></span></div><div class="artiststyle"><i class="fa fa-folder"></i><span class="artist1"></span><span class="geci"></span></div></div><div class="control"><i class="loop fa fa-retweet"title="顺序播放"></i><i class="prev fa fa-backward"title="上一首"></i><div class="status"><b><i class="play fa fa-play"title="播放"></i><i class="pause fa fa-pause"title="暂停"></i></b></div><i class="next fa fa-forward"title="下一首"></i><i class="random fa fa-random current"title="随机播放"></i></div><div class="musicbottom"><div class="volume"><i class="mute fa fa-volume-off"></i><i class="volumeup fa fa-volume-up"></i><div class="progress"><div class="volume-on ts5"><div class="drag"title="音量"></div></div></div></div><div class="switch-playlist"><i class="fa fa-bars"title="播放列表"></i></div><div class="switch-ksclrc"><i class="fa fa-toggle-on"title="关闭歌词"></i></div><div class="switch-default"><i class="fa fa-refresh"title="切换默认专辑"></i></div></div><div class="cover"></div></div><div class="playlist"><div class="playlist-bd"><div class="album-list"><div class="musicheader"></div><div class="list"></div></div><div class="song-list"><div class="musicheader"><span></span></div><div class="list"><ul></ul></div></div></div></div><div class="switch-player"><i class="fa fa-angle-right"style="margin-top: 20px;"></i></div>';
+div.innerHTML = '<div class="player"><div class="infos"><div class="songstyle"><i class="fa fa-reddit-alien"></i><span class="song"></span></div><div class="timestyle"><i class="fa fa-life-ring"></i><span class="time">00:00/00:00</span></div><div class="artiststyle"><i class="fa fa-heartbeat"></i><span class="artist"></span><span class="moshi"><i class="loop fa fa-random current"></i>&nbsp;<span class="moshi1">随机播放</span></span></div><div class="artiststyle"><i class="fa fa-anchor"></i><span class="artist1"></span><span class="geci"></span></div></div><div class="control"><i class="loop fa fa-share"title="顺序播放"></i><i class="prev fa fa-backward"title="上一首"></i><div class="status"><b><i class="play fa fa-play"title="播放"></i><i class="pause fa fa-pause"title="暂停"></i></b></div><i class="next fa fa-forward"title="下一首"></i><i class="random fa fa-random current"title="随机播放"></i></div><div class="musicbottom"><div class="volume"><i class="mute fa fa-volume-off"></i><i class="volumeup fa fa-volume-up"></i><div class="progress"><div class="volume-on ts5"><div class="drag"title="音量"></div></div></div></div><div class="switch-playlist"><i class="fa fa-bars"title="播放列表"></i></div><div class="switch-ksclrc"><i class="fa fa-toggle-on"title="关闭歌词"></i></div><div class="switch-default"><i class="fa fa-refresh"title="切换默认专辑"></i></div></div><div class="cover"></div></div><div class="playlist"><div class="playlist-bd"><div class="album-list"><div class="musicheader"></div><div class="list"></div></div><div class="song-list"><div class="musicheader"><span></span></div><div class="list"><ul></ul></div></div></div></div><div class="switch-player"><i class="fa fa-angle-right"style="margin-top: 20px;"></i></div>';
 parent.appendChild(div);
 // 添加wenkmTips
 var div = document.createElement("div");
@@ -135,9 +135,9 @@ if ((top.location != self.location)) {
 			$('#wenkmLrc, #wenkmKsc').html('');
 			setTimeout(function () {
 				if (hasgeci) {
-					$songFrom3.html('<i class="fa fa-check-circle"></i> 歌词' + songFrom33);
+					$songFrom3.html('<i class="fa fa-indent"></i> 歌词' + songFrom33);
 				} else {
-					$songFrom3.html('<i class="fa fa-times-circle"></i> 歌词' + songFrom33);
+					$songFrom3.html('<i class="fa fa-outdent"></i> 歌词' + songFrom33);
 				};
 				$(".switch-down").css("right", "65px");
 				$(".switch-default").css("right", "95px");
@@ -153,7 +153,7 @@ if ((top.location != self.location)) {
 					url: lrcurl,
 					success: function (lrctext) {
 						if (typeof (lrctext) == 'undefined') {
-							songFrom44 = ' - 暂无歌词', $songFrom3.html('<i class="fa fa-times-circle"></i> 暂无歌词');
+							songFrom44 = ' - 暂无歌词', $songFrom3.html('<i class="fa fa-outdent"></i> 暂无歌词');
 							$(".switch-ksclrc").hide();
 							$(".switch-down").css("right", "35px");
 							$(".switch-default").css("right", "65px");
@@ -168,7 +168,7 @@ if ((top.location != self.location)) {
 									wenkmLrc.lrc.format(lrctext);
 								}, 500);
 							} else {
-								songFrom44 = ' - 暂无歌词', $songFrom3.html('<i class="fa fa-times-circle"></i> 暂无歌词');
+								songFrom44 = ' - 暂无歌词', $songFrom3.html('<i class="fa fa-outdent"></i> 暂无歌词');
 								$(".switch-ksclrc").hide();
 								$(".switch-down").css("right", "35px");
 								$(".switch-default").css("right", "65px");
@@ -245,7 +245,7 @@ if ((top.location != self.location)) {
 	$songName.html('<a style="color:#f00">初始化失败</a>');
 	$songFrom.html('<a href="https://wang64.cn" title="随心" target="_blank" style="color:#f00">随心</a>');
 	$songFrom1.html('<a style="color:#f00">音乐播放器</a>');
-	$songFrom3.html('<i class="fa fa-times-circle"></i> 歌词未载入');
+	$songFrom3.html('<i class="fa fa-outdent"></i> 歌词未载入');
 	$player.css({
 		background: '#38343e'
 	});
@@ -417,7 +417,7 @@ if ((top.location != self.location)) {
 		$('.random', $player).removeClass(cur);
 		random = false;
 		wenkmTips.show('顺序播放');
-		$songFrom2.html('<i class="loop fa fa-retweet"></i> 顺序播放');
+		$songFrom2.html('<i class="loop fa fa-share"></i> 顺序播放');
 	});
 	// 音量交互
 	var $progress = $('.progress', $player);
@@ -470,20 +470,20 @@ if ((top.location != self.location)) {
 		if (!$('#wenkmLrc').hasClass('hide')) {
 			ycgeci = true;
 			if (hasLrc) {
-				$songFrom3.html('<i class="fa fa-check-circle"></i> 歌词开启');
+				$songFrom3.html('<i class="fa fa-indent"></i> 歌词开启');
 			};
 			if (hasKsc) {
-				$songFrom3.html('<i class="fa fa-check-circle"></i> Ksc歌词开启');
+				$songFrom3.html('<i class="fa fa-indent"></i> Ksc歌词开启');
 			};
 			wenkmTips.show('开启歌词显示');
 			songFrom33 = '开启', $songFrom4.html('<i class="fa fa-toggle-on" title="关闭歌词"></i>');
 		} else {
 			ycgeci = false;
 			if (hasLrc) {
-				$songFrom3.html('<i class="fa fa-times-circle"></i> 歌词关闭');
+				$songFrom3.html('<i class="fa fa-outdent"></i> 歌词关闭');
 			};
 			if (hasKsc) {
-				$songFrom3.html('<i class="fa fa-times-circle"></i> Ksc歌词关闭');
+				$songFrom3.html('<i class="fa fa-outdent"></i> Ksc歌词关闭');
 			};
 			wenkmTips.show('歌词显示已关闭');
 			songFrom33 = '关闭', $songFrom4.html('<i class="fa fa-toggle-off" title="打开歌词"></i>');
@@ -518,7 +518,7 @@ if ((top.location != self.location)) {
 				songTotal = aplist.length;
 				var songList = '';
 				// 头部信息
-				$('.musicheader', $albumList).html('我的歌单列表' + '' + '(' + songTotal + ')');
+				$('.musicheader', $albumList).html('我的音乐列表' + '' + '(' + songTotal + ')');
 				for (var i = 0; i < songTotal; i++) {
 					songList += '<li title="' + aplist[i].artist + ' - ' + aplist[i].name + '"><span class="index">' + (i + 1) + '</span>' + '<span class="artist"></span>' + aplist[i].name + '</li>';
 				};
@@ -553,7 +553,7 @@ if ((top.location != self.location)) {
 	var wenkmList = [
 		{
 			song_album: "wang926454",
-			song_album1: "我的歌单列表",
+			song_album1: "我的音乐列表",
 			song_file: "/",
 			song_name: "The Nights".split("|"),
 			song_id: "35090549wy".split("|")
@@ -720,7 +720,7 @@ $(window).scroll(function () {
 				$player.addClass('ksclrc');
 				$('#wenkmLrc').addClass('hide');
 				$('#wenkmKsc').addClass('hidePlayer');
-				$songFrom3.html('<i class="fa fa-times-circle"></i> 歌词暂时隐藏');
+				$songFrom3.html('<i class="fa fa-outdent"></i> 歌词暂时隐藏');
 				$songFrom4.html('<i class="fa fa-toggle-off" title="歌词暂时隐藏"></i>');
 
 				if (hasLrc) {
@@ -738,10 +738,10 @@ $(window).scroll(function () {
 				$('#wenkmLrc').removeClass('hide');
 				$('#wenkmKsc').removeClass('hidePlayer');
 				if (hasLrc) {
-					$songFrom3.html('<i class="fa fa-check-circle"></i> 歌词开启');
+					$songFrom3.html('<i class="fa fa-indent"></i> 歌词开启');
 				};
 				if (hasKsc) {
-					$songFrom3.html('<i class="fa fa-check-circle"></i> Ksc歌词开启');
+					$songFrom3.html('<i class="fa fa-indent"></i> Ksc歌词开启');
 				};
 				$songFrom4.html('<i class="fa fa-toggle-on" title="关闭歌词"></i>');
 			}
