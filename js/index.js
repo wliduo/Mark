@@ -133,11 +133,11 @@ function back() {
 var num = 0;
 function back2() {
     if (os.isPc) {
-        var url = "https://wang926454.gitee.io/reader/Image/201812/normal/23005.png";
+        var url = "https://wang926454.gitee.io/reader/Image/201903/normal/12005.png";
         if (num == 0) {
             num = 1;
         } else {
-            url = "https://wang926454.gitee.io/reader/Image/201812/normal/21005.png";
+            url = "https://wang926454.gitee.io/reader/Image/201812/normal/23005.png";
             num = 0;
         }
         var indexImage = document.getElementsByClassName('background');

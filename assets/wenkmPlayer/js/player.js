@@ -610,7 +610,6 @@ function netmusic() {
 				playercolor()
 			},
 			error: function () {
-				var cont = '0,0,0';
 				playercolor()
 			}
 		})
@@ -656,6 +655,9 @@ function allmusic() {
 	};
 }
 function playercolor() {
+	if (!cont) {
+		var cont = '108, 105, 113';
+	}
 	$player.css({
 		background: 'rgba(' + cont + ',.8)'
 	});
