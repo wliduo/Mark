@@ -602,15 +602,38 @@ function netmusic() {
 			$cover.removeClass('changing');
 		}, 100); 
 		$.ajax({
-			url: 'https://free.limh.me/api/colorapi.php',
+			url: 'https://free.limh.me/api/colorapi.php1',
 			type: 'GET',
-			dataType: 'script',
-			data: { url: coverImg.src, userurl: location.hostname },
+			dataType:"script", cache: true, async: false,
+			data: { url: coverImg.src },
 			success: function () {
-				playercolor()
+				$player.css({
+					background: 'rgba(' + cont + ',.8)'
+				});
+				$player1.css({
+					background: 'rgba(' + cont + ',.3)'
+				});
+				$tips.css({
+					background: 'rgba(' + cont + ',.6)'
+				});
+				$lk.css({
+					background: 'rgba(' + cont + ',.3)'
+				});
 			},
 			error: function () {
-				playercolor()
+				var contEr = '108, 105, 113';
+				$player.css({
+					background: 'rgba(' + contEr + ',.8)'
+				});
+				$player1.css({
+					background: 'rgba(' + contEr + ',.3)'
+				});
+				$tips.css({
+					background: 'rgba(' + contEr + ',.6)'
+				});
+				$lk.css({
+					background: 'rgba(' + contEr + ',.3)'
+				});
 			}
 		})
 	};
@@ -655,7 +678,10 @@ function allmusic() {
 	};
 }
 function playercolor() {
-	if (!cont) {
+	if (typeof cont != 'undefined') {
+		console.log('err:' + cont)
+	} else {
+		console.log('err:' + cont)
 		var cont = '108, 105, 113';
 	}
 	$player.css({
