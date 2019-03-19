@@ -142,9 +142,8 @@ function initModel(waifuPath, type) {
     if (live2d_settings.waifuEdgeSide[0] == 'left') $(".waifu").css("left",live2d_settings.waifuEdgeSide[1]+'px');
     else if (live2d_settings.waifuEdgeSide[0] == 'right') $(".waifu").css("right",live2d_settings.waifuEdgeSide[1]+'px');
     
-    if (live2d_settings.waifuMinWidth != 'disable') $(window).resize(function() {
-        $(window).width() <= Number(live2d_settings.waifuMinWidth.replace('px','')) ? $(".waifu").hide() : $(".waifu").show();
-    });
+    window.waifuResize = function() { $(window).width() <= Number(live2d_settings.waifuMinWidth.replace('px','')) ? $(".waifu").hide() : $(".waifu").show(); };
+    if (live2d_settings.waifuMinWidth != 'disable') { waifuResize(); $(window).resize(function() {waifuResize()}); }
     
     try {
         if (live2d_settings.waifuDraggable == 'axis-x') $(".waifu").draggable({ axis: "x", revert: live2d_settings.waifuDraggableRevert });
@@ -181,7 +180,7 @@ function initModel(waifuPath, type) {
     if (!live2d_settings.canSwitchHitokoto) $('.waifu-tool .fui-chat').hide();
     if (!live2d_settings.canTakeScreenshot) $('.waifu-tool .fui-photo').hide();
     if (!live2d_settings.canTurnToHomePage) $('.waifu-tool .fui-home').hide();
-    if (!live2d_settings.canTurnToAboutPage) $('.waifu-tool .fui-circle').hide();
+    if (!live2d_settings.canTurnToAboutPage) $('.waifu-tool .fui-info-circle').hide();
 
     if (waifuPath === undefined) waifuPath = '';
     var modelId = localStorage.getItem('modelId');
@@ -193,16 +192,19 @@ function initModel(waifuPath, type) {
     } loadModel(modelId, modelTexturesId);
 }
 
-function loadModel(modelId, modelTexturesId) {
+function loadModel(modelId, modelTexturesId=0) {
     if (live2d_settings.modelStorage) {
         localStorage.setItem('modelId', modelId);
-        
-        if (modelTexturesId === undefined) modelTexturesId = 0;
         localStorage.setItem('modelTexturesId', modelTexturesId);
+    } else {
+        sessionStorage.setItem('modelId', modelId);
+        sessionStorage.setItem('modelTexturesId', modelTexturesId);
     } loadlive2d('live2d', live2d_settings.modelAPI+'get/?id='+modelId+'-'+modelTexturesId, (live2d_settings.showF12Status ? console.log('[Status]','live2d','模型',modelId+'-'+modelTexturesId,'加载完成'):null));
 }
 
 function loadTipsMessage(result) {
+    window.waifu_tips = result;
+    
     $.each(result.mouseover, function (index, tips){
         $(document).on("mouseover", tips.selector, function (){
             var text = getRandText(tips.text);
@@ -255,7 +257,7 @@ function loadTipsMessage(result) {
         window.setTimeout(function() {$('.waifu').hide();}, 1300);
     });
     
-    if (live2d_settings.showWelcomeMessage) {
+    window.showWelcomeMessage = function(result) {
         var text;
         if (window.location.href == live2d_settings.homePageUrl) {
             var now = (new Date()).getHours();
@@ -289,12 +291,12 @@ function loadTipsMessage(result) {
             } else text = referrer_message.none[0] + document.title.split(referrer_message.none[2])[0] + referrer_message.none[1];
         }
         showMessage(text, 6000);
-    }
+    }; if (live2d_settings.showWelcomeMessage) showWelcomeMessage(result);
     
     var waifu_tips = result.waifu;
     
     function loadOtherModel() {
-        var modelId = localStorage.getItem('modelId');
+        var modelId = modelStorageGetItem('modelId');
         var modelRandMode = live2d_settings.modelRandMode;
         
         $.ajax({
@@ -311,8 +313,8 @@ function loadTipsMessage(result) {
     }
     
     function loadRandTextures() {
-        var modelId = localStorage.getItem('modelId');
-        var modelTexturesId = localStorage.getItem('modelTexturesId');
+        var modelId = modelStorageGetItem('modelId');
+        var modelTexturesId = modelStorageGetItem('modelTexturesId');
         var modelTexturesRandMode = live2d_settings.modelTexturesRandMode;
         
         $.ajax({
@@ -327,6 +329,8 @@ function loadTipsMessage(result) {
             }
         });
     }
+    
+    function modelStorageGetItem(key) { return live2d_settings.modelStorage ? localStorage.getItem(key) : sessionStorage.getItem(key); }
     
     /* 检测用户活动状态，并在空闲时显示一言 */
     if (live2d_settings.showHitokoto) {

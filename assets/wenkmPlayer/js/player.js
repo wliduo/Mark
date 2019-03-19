@@ -602,7 +602,7 @@ function netmusic() {
 			$cover.removeClass('changing');
 		}, 100); 
 		$.ajax({
-			url: 'https://free.limh.me/api/colorapi.php1',
+			url: 'https://free.limh.me/api/colorapi.php',
 			type: 'GET',
 			dataType:"script", cache: true, async: false,
 			data: { url: coverImg.src },
