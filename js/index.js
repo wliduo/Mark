@@ -93,10 +93,10 @@ function loveHitokoto() {
 loveHitokoto();
 // window.setTimeout(loveHitokoto, 200);
 
-// 跳转
-function bookmarks() {
+// 跳转书签
+/* function bookmarks() {
     window.open("https://mark.wang64.cn/bookmarks");
-}
+} */
 
 var imageUrls = ['https://wang926454.gitee.io/reader/Image/201810/normal/20010.png',
                     'https://wang926454.gitee.io/reader/Image/201811/normal/02015.png',
