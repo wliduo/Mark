@@ -12,13 +12,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
     <link rel="stylesheet" href="css/index.css">
     <!-- Live2D Start -->
-    <link rel="stylesheet" type="text/css" href="https://www.fghrsh.net/zb_users/plugin/live2d/assets/waifu.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://www.fghrsh.net/zb_users/plugin/live2d/assets/waifu.min.css" />
     <!-- Live2D End -->
     <style>
-        .aplayer-lrc-contents > p {
-           color: #fff !important;
-           text-shadow: none !important;
+        .aplayer-lrc-contents>p {
+            color: #fff !important;
+            text-shadow: none !important;
         }
+
         .waifu-tool span {
             display: block;
             cursor: pointer;
@@ -26,6 +27,8 @@
             transition: .2s
         }
     </style>
+    <!-- Vue.js -->
+    <script src="https://cdn.staticfile.org/vue/2.5.22/vue.min.js"></script>
     <!-- waifu-tips.js 依赖 JQuery 库 -->
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
@@ -87,7 +90,23 @@
             <span class="fui-cross"></span>
         </div>
     </div>
-        
+
+    <div id="app">
+        <my-danmaku ref="myDanmaku"
+          class="demo"
+          :danmus="danmus"
+          :config="config">
+        </my-danmaku>
+
+        <!-- vue-danmaku 非时间流式的弹幕交互组件 https://github.com/hellodigua/vue-danmaku -->
+        <template id="danmakuTpl">
+            <div ref="danmaku" class="vue-danmaku">
+                <slot></slot>
+                <div :class="['danmus', {'show': !this.hidden}, {'paused': this.paused}]" ref="danmus"></div>
+            </div>
+        </template>
+    </div>
+
     <script src="https://www.fghrsh.net/zb_users/plugin/live2d/assets/waifu-tips.min.js?v=1.4.2-fix3"></script>
     <script src="https://www.fghrsh.net/zb_users/plugin/live2d/assets/live2d.min.js?v=1.0.5"></script>
     <script type="text/javascript">

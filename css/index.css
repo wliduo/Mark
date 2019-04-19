@@ -1,3 +1,67 @@
+.vue-danmaku {
+    position: relative;
+    overflow: hidden;
+}
+.vue-danmaku .danmus {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.vue-danmaku .danmus.show {
+    opacity: 1;
+}
+.vue-danmaku .danmus.paused .dm.move {
+    animation-play-state: paused;
+}
+.vue-danmaku .danmus p {
+    position: absolute;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    margin: 0;
+    white-space: pre;
+}
+.vue-danmaku .danmus .dm {
+    position: absolute;
+    color: #fff;
+    font-size: 18px;
+    right: 0;
+    top: 8px;
+    white-space: pre;
+    text-shadow: 1px 1px 2px #001;
+    transform: translateX(100%);
+}
+.vue-danmaku .danmus .dm.move {
+    will-change: transform;
+    animation-name: danmaku;
+    animation-timing-function: linear;
+    animation-play-state: running;
+}
+@keyframes danmaku {
+    from {
+      transform: translateX(100%);
+    }
+}
+@-webkit-keyframes danmaku {
+    from {
+      -webkit-transform: translateX(100%);
+    }
+}
+
+.demo {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* background: linear-gradient(45deg, #5ac381, #20568b); */
+}
+  
+
 @media screen and (min-width: 600px) {
     /* Hitokoto Page */
     .hitokoto-fullpage {
