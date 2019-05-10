@@ -95,30 +95,30 @@ function getNowFormatDate() {
 
 // 跳转书签
 /* function bookmarks() {
-    window.open("https://mark.wang64.cn/bookmarks");
+    window.open("https://mark.dolyw.com/bookmarks");
 } */
 
-var imageUrls = ['https://wang926454.gitee.io/reader/Image/201810/normal/20010.png',
-    'https://wang926454.gitee.io/reader/Image/201811/normal/02015.png',
-    'https://wang926454.gitee.io/reader/Image/201811/normal/05020.png',
-    'https://wang926454.gitee.io/reader/Image/201811/normal/05005.png',
-    'https://wang926454.gitee.io/reader/Image/201811/normal/05030.png',
-    'https://wang926454.gitee.io/reader/Image/201810/normal/10005.png',
-    'https://wang926454.gitee.io/reader/Image/201810/normal/20030.png',
-    'https://wang926454.gitee.io/reader/Image/201811/normal/01005.png',
-    'https://wang926454.gitee.io/reader/Image/201811/normal/01010.png',
-    'https://wang926454.gitee.io/reader/Image/201811/normal/01020.png',
-    'https://wang926454.gitee.io/reader/Image/201811/normal/01025.png',
-    'https://wang926454.gitee.io/reader/Image/201811/normal/04035.png',
-    'https://wang926454.gitee.io/reader/Image/201811/normal/04040.png',
-    'https://wang926454.gitee.io/reader/Image/201811/normal/04045.png',
-    'https://wang926454.gitee.io/reader/Image/201811/normal/04050.png',
-    'https://wang926454.gitee.io/reader/Image/201811/normal/04055.png',
-    'https://wang926454.gitee.io/reader/Image/201811/normal/04060.png',
-    'https://wang926454.gitee.io/reader/Image/201811/normal/05010.png',
-    'https://wang926454.gitee.io/reader/Image/201811/normal/05015.png',
-    'https://wang926454.gitee.io/reader/Image/201811/normal/05025.png',
-    'https://wang926454.gitee.io/reader/Image/201901/normal/11010.png'];
+var imageUrls = ['https://dolyw.gitee.io/reader/Image/201810/normal/20010.png',
+    'https://dolyw.gitee.io/reader/Image/201811/normal/02015.png',
+    'https://dolyw.gitee.io/reader/Image/201811/normal/05020.png',
+    'https://dolyw.gitee.io/reader/Image/201811/normal/05005.png',
+    'https://dolyw.gitee.io/reader/Image/201811/normal/05030.png',
+    'https://dolyw.gitee.io/reader/Image/201810/normal/10005.png',
+    'https://dolyw.gitee.io/reader/Image/201810/normal/20030.png',
+    'https://dolyw.gitee.io/reader/Image/201811/normal/01005.png',
+    'https://dolyw.gitee.io/reader/Image/201811/normal/01010.png',
+    'https://dolyw.gitee.io/reader/Image/201811/normal/01020.png',
+    'https://dolyw.gitee.io/reader/Image/201811/normal/01025.png',
+    'https://dolyw.gitee.io/reader/Image/201811/normal/04035.png',
+    'https://dolyw.gitee.io/reader/Image/201811/normal/04040.png',
+    'https://dolyw.gitee.io/reader/Image/201811/normal/04045.png',
+    'https://dolyw.gitee.io/reader/Image/201811/normal/04050.png',
+    'https://dolyw.gitee.io/reader/Image/201811/normal/04055.png',
+    'https://dolyw.gitee.io/reader/Image/201811/normal/04060.png',
+    'https://dolyw.gitee.io/reader/Image/201811/normal/05010.png',
+    'https://dolyw.gitee.io/reader/Image/201811/normal/05015.png',
+    'https://dolyw.gitee.io/reader/Image/201811/normal/05025.png',
+    'https://dolyw.gitee.io/reader/Image/201901/normal/11010.png'];
 
 function back() {
     var indexImage = document.getElementsByClassName('background');
@@ -133,11 +133,11 @@ function back() {
 var num = 0;
 function back2() {
     if (os.isPc) {
-        var url = "https://wang926454.gitee.io/reader/Image/201903/normal/12005.png";
+        var url = "https://dolyw.gitee.io/reader/Image/201903/normal/12005.png";
         if (num == 0) {
             num = 1;
         } else {
-            url = "https://wang926454.gitee.io/reader/Image/201812/normal/23005.png";
+            url = "https://dolyw.gitee.io/reader/Image/201812/normal/23005.png";
             num = 0;
         }
         var indexImage = document.getElementsByClassName('background');

@@ -11,32 +11,32 @@ if (isMobile()) {
 } else {
     try {
       // 加载wenkmPlayerc
-      $.ajax({ url: 'https://mark.wang64.cn/assets/wenkmPlayer/js/player.js?v=123', dataType: "script", cache: true, async: false });
+      $.ajax({ url: 'https://mark.dolyw.com/assets/wenkmPlayer/js/player.js?v=123', dataType: "script", cache: true, async: false });
     } catch (err) {
       console.log('[Error] JQuery is not defined.')
     }
 }
 
-var imageUrls = ['https://wang926454.gitee.io/reader/Image/201810/normal/20010.png',
-                    'https://wang926454.gitee.io/reader/Image/201811/normal/02015.png',
-                    'https://wang926454.gitee.io/reader/Image/201811/normal/05020.png',
-                    'https://wang926454.gitee.io/reader/Image/201811/normal/05005.png',
-                    'https://wang926454.gitee.io/reader/Image/201811/normal/05030.png',
-                    'https://wang926454.gitee.io/reader/Image/201810/normal/10005.png',
-                    'https://wang926454.gitee.io/reader/Image/201810/normal/20030.png',
-                    'https://wang926454.gitee.io/reader/Image/201811/normal/01005.png',
-                    'https://wang926454.gitee.io/reader/Image/201811/normal/01010.png',
-                    'https://wang926454.gitee.io/reader/Image/201811/normal/01020.png',
-                    'https://wang926454.gitee.io/reader/Image/201811/normal/01025.png',
-                    'https://wang926454.gitee.io/reader/Image/201811/normal/04035.png',
-                    'https://wang926454.gitee.io/reader/Image/201811/normal/04040.png',
-                    'https://wang926454.gitee.io/reader/Image/201811/normal/04045.png',
-                    'https://wang926454.gitee.io/reader/Image/201811/normal/04050.png',
-                    'https://wang926454.gitee.io/reader/Image/201811/normal/04055.png',
-                    'https://wang926454.gitee.io/reader/Image/201811/normal/04060.png',
-                    'https://wang926454.gitee.io/reader/Image/201811/normal/05010.png',
-                    'https://wang926454.gitee.io/reader/Image/201811/normal/05015.png',
-                    'https://wang926454.gitee.io/reader/Image/201811/normal/05025.png'];
+var imageUrls = ['https://dolyw.gitee.io/reader/Image/201810/normal/20010.png',
+                    'https://dolyw.gitee.io/reader/Image/201811/normal/02015.png',
+                    'https://dolyw.gitee.io/reader/Image/201811/normal/05020.png',
+                    'https://dolyw.gitee.io/reader/Image/201811/normal/05005.png',
+                    'https://dolyw.gitee.io/reader/Image/201811/normal/05030.png',
+                    'https://dolyw.gitee.io/reader/Image/201810/normal/10005.png',
+                    'https://dolyw.gitee.io/reader/Image/201810/normal/20030.png',
+                    'https://dolyw.gitee.io/reader/Image/201811/normal/01005.png',
+                    'https://dolyw.gitee.io/reader/Image/201811/normal/01010.png',
+                    'https://dolyw.gitee.io/reader/Image/201811/normal/01020.png',
+                    'https://dolyw.gitee.io/reader/Image/201811/normal/01025.png',
+                    'https://dolyw.gitee.io/reader/Image/201811/normal/04035.png',
+                    'https://dolyw.gitee.io/reader/Image/201811/normal/04040.png',
+                    'https://dolyw.gitee.io/reader/Image/201811/normal/04045.png',
+                    'https://dolyw.gitee.io/reader/Image/201811/normal/04050.png',
+                    'https://dolyw.gitee.io/reader/Image/201811/normal/04055.png',
+                    'https://dolyw.gitee.io/reader/Image/201811/normal/04060.png',
+                    'https://dolyw.gitee.io/reader/Image/201811/normal/05010.png',
+                    'https://dolyw.gitee.io/reader/Image/201811/normal/05015.png',
+                    'https://dolyw.gitee.io/reader/Image/201811/normal/05025.png'];
 var indexImage = document.getElementById('web_bg');
 var img = new Image();
 var url = imageUrls[Math.floor(imageUrls.length * Math.random())];

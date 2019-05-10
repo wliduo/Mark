@@ -17,12 +17,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wang926454/Mark.git"
+    "url": "git+https://github.com/dolyw/Mark.git"
   },
-  "author": "wang926454",
+  "author": "dolyw",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wang926454/Mark/issues"
+    "url": "https://github.com/dolyw/Mark/issues"
   },
-  "homepage": "https://github.com/wang926454/Mark#readme"
+  "homepage": "https://github.com/dolyw/Mark#readme"
 }

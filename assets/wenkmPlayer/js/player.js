@@ -1,6 +1,6 @@
-/* 根据明月浩空音乐播放器-免费版进行二次修改-wang64.cn */
+/* 根据明月浩空音乐播放器-免费版进行二次修改-dolyw.com */
 var name = "随心";
-var domain = "wang64.cn";
+var domain = "dolyw.com";
 
 // 获取我自己的歌单
 var aplist = getLove();
@@ -95,7 +95,7 @@ if ((top.location != self.location)) {
 		roundcolor = '#6C6971',
 		lightcolor = '#4169E1',
 		cur = 'current',
-		homeurl = 'https://wang64.cn',
+		homeurl = 'https://dolyw.com',
 		volume = $.cookie('myhk_player_volume') ? $.cookie('myhk_player_volume') : '.70',
 		albumId = 0,
 		songId = 0,
@@ -241,9 +241,9 @@ if ((top.location != self.location)) {
 	}
 
 	var cicleTime = null;
-	$cover.html('<img src="https://wang926454.gitee.io/reader/Image/headt.png">');
+	$cover.html('<img src="https://dolyw.gitee.io/reader/Image/headt.png">');
 	$songName.html('<a style="color:#f00">初始化失败</a>');
-	$songFrom.html('<a href="https://wang64.cn" title="随心" target="_blank" style="color:#f00">随心</a>');
+	$songFrom.html('<a href="https://dolyw.com" title="随心" target="_blank" style="color:#f00">随心</a>');
 	$songFrom1.html('<a style="color:#f00">音乐播放器</a>');
 	$songFrom3.html('<i class="fa fa-outdent"></i> 歌词未载入');
 	$player.css({
@@ -552,7 +552,7 @@ if ((top.location != self.location)) {
 
 	var wenkmList = [
 		{
-			song_album: "wang926454",
+			song_album: "dolyw",
 			song_album1: "我的音乐列表",
 			song_file: "/",
 			song_name: "The Nights".split("|"),
@@ -641,7 +641,7 @@ function netmusic() {
 		setTimeout(function () {
 			$(".myhk_pjax_loading_frame,.myhk_pjax_loading").hide();
 		}, 800);
-		coverImg.src = "https://wang926454.gitee.io/reader/Image/headt.png";
+		coverImg.src = "https://dolyw.gitee.io/reader/Image/headt.png";
 		setTimeout(function () {
 			wenkmTips.show(aplist[songId].artist + ' - ' + aplist[songId].name + ' - 图片获取失败');
 		}, 4000);

@@ -1,10 +1,10 @@
-/* 根据明月浩空音乐播放器-免费版进行二次修改-wang926454 */
+/* 根据明月浩空音乐播放器-免费版进行二次修改-dolyw */
 li,ul{margin:0;padding:0;list-style:none}
 .ts5{-webkit-transition:.5s;-moz-transition:.5s;-ms-transition:.5s;transition:.5s}
 #wenkmPlayer{margin:0;font:small 'Microsoft Yahei';-webkit-transition:.5s;-moz-transition:.5s;-ms-transition:.5s;transition:.5s;left:-300px;text-align:left;color:#38343e;width:300px;position:fixed;bottom:40px;box-shadow:0 0 5px 5px rgba(0,0,0,.2);border-radius:5px;z-index:5000}
 #wenkmPlayer .player{position:relative;overflow:hidden;text-shadow:none;background-color:rgba(0,0,0,.1);height:180px;border-radius:5px 5px 0 0}
 #wenkmPlayer .player .cover{-moz-box-sizing:content-box;-webkit-box-sizing:content-box;-o-box-sizing:content-box;-ms-box-sizing:content-box;box-sizing:content-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;position:absolute;background-color:#fff;border:5px #fff solid;width:104px;height:104px;top:15px;left:94px;border-radius:50%;box-shadow:0 0 20px rgba(0,0,0,.3)}
-#wenkmPlayer .player .cover:after{-moz-box-sizing:content-box;-webkit-box-sizing:content-box;-o-box-sizing:content-box;-ms-box-sizing:content-box;box-sizing:content-box;content:'wang64.cn';position:absolute;opacity:.5;width:100%;left:0;text-align:center;top:45px}
+#wenkmPlayer .player .cover:after{-moz-box-sizing:content-box;-webkit-box-sizing:content-box;-o-box-sizing:content-box;-ms-box-sizing:content-box;box-sizing:content-box;content:'dolyw.com';position:absolute;opacity:.5;width:100%;left:0;text-align:center;top:45px}
 #wenkmPlayer .player .cover.changing img{-webkit-transform:scale(.3);-moz-transform:scale(.3);-ms-transform:scale(.3);transform:scale(.3);opacity:0}
 #wenkmPlayer .player .cover img{-moz-box-sizing:content-box;-webkit-box-sizing:content-box;-o-box-sizing:content-box;-ms-box-sizing:content-box;box-sizing:content-box;-webkit-transition:.5s;-moz-transition:.5s;-ms-transition:.5s;transition:.5s;border-radius:50%;border:5px #fff solid;width:104px;height:104px;top:-5px;left:-5px;position:relative;z-index:10}
 #wenkmPlayer .player .infos{font-size:12px;position:absolute;top:15px;right:5px;left:5px;color:#fff;line-height:unset}

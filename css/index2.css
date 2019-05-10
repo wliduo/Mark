@@ -17,7 +17,7 @@ body {
     overflow-y: hidden; */
     overflow: hidden;
     /* 鼠标默认显示 */
-    cursor: url(https://note.wang64.cn/images/cursor.ico), auto;
+    cursor: url(https://note.dolyw.com/images/cursor.ico), auto;
 }
 
 #web_bg {
@@ -29,7 +29,7 @@ body {
     min-width: 1000px;
     z-index: -10;
     zoom: 1;
-    /* background-image: url("https://wang926454.gitee.io/reader/Image/201810/normal/20010.png"); */
+    /* background-image: url("https://dolyw.gitee.io/reader/Image/201810/normal/20010.png"); */
     background-repeat: no-repeat;
     background-size: cover;
     -webkit-background-size: cover;
