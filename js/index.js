@@ -144,12 +144,15 @@ function back2() {
         var img = new Image();
         img.src = url;
         img.onload = function () {
+            $("#bg").hide();
             indexImage[0].style.backgroundImage = "url(" + url + ")";
+            $("#bg").fadeIn(1000);
         };
     }
 }
 
 // window.setTimeout(back, 1500);
+back2();
 
 // 新建组件
 var myDanmakuTpl = Vue.extend({
