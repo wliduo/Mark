@@ -366,9 +366,9 @@ var myHome = new Vue({
             speed: 15,
             fontSize: 18
         },
-        danmus: [
+        data: [
             '看到这条弹幕你已经不是前1000了~＞ω＜',
-            /* '大军还有一秒到达现场~⊙﹏⊙', */
+            '大军还有一秒到达现场~⊙﹏⊙',
             "红红火火恍恍惚惚，韩红会画画后悔画韩寒~(●'◡'●)",
             '开心的像个200多斤的孩子~⊙０⊙',
             'B站看片指日可待~∩０∩',
@@ -376,7 +376,8 @@ var myHome = new Vue({
             'BGM~爱的自杀，再问供养，唉，我都要哭了~∪ω∪',
             "牛顿的棺材板压不住了~(●'◡'●)",
             '教练我想学这个~o(*////▽////*)o'
-        ]
+        ],
+        danmus: []
     },
     // 启动时就执行
     mounted: function () {
@@ -388,8 +389,8 @@ var myHome = new Vue({
                 this.config.speed = 8
                 this.$refs.myDanmaku.reset()
             }
+            this.getHitokoto()
             this.loveHitokoto()
-            this.$refs.myDanmaku.play()
         })
     },
     methods: {
@@ -416,6 +417,33 @@ var myHome = new Vue({
             }).catch((err) => {
                 console.error(`在更新一言时捕获错误， 错误信息: ${err.message}. 当前时间: ${new Date().toISOString()}`);
                 this.loveHitokoto();
+            });
+        },
+        getHitokoto () {
+            fetch("https://api.fczbl.vip/hitokoto/?encode=json").then(function (response) {   
+                return response.json();
+            }).then((data) => {
+                // console.log(data)
+                this.$refs.myDanmaku.add(data.hitokoto)
+                setTimeout(() => {
+                    if (this.danmus.length > 2) {
+                        this.$refs.myDanmaku.play()
+                    }
+                    if (this.danmus.length < 30) {
+                        this.getHitokoto()
+                    }
+                }, 500)
+            }).catch((err) => {
+                console.log(err)
+                this.$refs.myDanmaku.add(this.data[Math.floor(this.data.length * Math.random())])
+                setTimeout(() => {
+                    if (this.danmus.length > 2) {
+                        this.$refs.myDanmaku.play()
+                    }
+                    if (this.danmus.length < 30) {
+                        this.getHitokoto()
+                    }
+                }, 500)
             });
         }
     }
