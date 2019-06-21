@@ -600,7 +600,8 @@ function netmusic() {
 		}, 800);
 		setTimeout(function () {
 			$cover.removeClass('changing');
-		}, 100); 
+		}, 100);
+
 		$.ajax({
 			url: 'https://free.limh.me/api/colorapi.php',
 			type: 'GET',
@@ -621,7 +622,8 @@ function netmusic() {
 				});
 			},
 			error: function () {
-				var contEr = '108, 105, 113';
+				// var contEr = '108, 105, 113';
+				var contEr = Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256);
 				$player.css({
 					background: 'rgba(' + contEr + ',.8)'
 				});
