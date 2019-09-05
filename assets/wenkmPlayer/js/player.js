@@ -246,7 +246,7 @@ if ((top.location != self.location)) {
 	$songFrom.html('<a href="https://dolyw.com" title="随心" target="_blank" style="color:#f00">随心</a>');
 	$songFrom1.html('<a style="color:#f00">音乐播放器</a>');
 	$songFrom3.html('<i class="fa fa-outdent"></i> 歌词未载入');
-	$player.css({
+	/* $player.css({
 		background: '#38343e'
 	});
 	$player1.css({
@@ -257,7 +257,23 @@ if ((top.location != self.location)) {
 	});
 	$lk.css({
 		background: '#38343e'
+	}); */
+
+	var contEr = '108, 105, 113';
+	// var contEr = Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256);
+	$player.css({
+		background: 'rgba(' + contEr + ',.8)'
 	});
+	$player1.css({
+		background: 'rgba(' + contEr + ',.3)'
+	});
+	$tips.css({
+		background: 'rgba(' + contEr + ',.6)'
+	});
+	$lk.css({
+		background: 'rgba(' + contEr + ',.3)'
+	});
+
 	var wenkmMedia = {
 		play: function () {
 			$player.addClass('playing');
