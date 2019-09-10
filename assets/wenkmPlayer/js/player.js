@@ -618,12 +618,19 @@ function netmusic() {
 			$cover.removeClass('changing');
 		}, 100);
 
-		$.ajax({
-			url: 'https://free.limh.me/api/colorapi.php',
-			type: 'GET',
-			dataType:"script", cache: true, async: false,
-			data: { url: coverImg.src },
-			success: function () {
+		var coverImgTemp = new Image();
+		// 跨域
+		coverImgTemp.crossOrigin = 'Anonymous';
+		coverImgTemp.src = 'https://cors-anywhere.herokuapp.com/' + coverImg.src;
+
+		coverImgTemp.onload = function () {
+			try {
+				var cont = '108, 105, 113';
+				var colorThief = new ColorThief();
+				// 获取主颜色
+				var colorArray = colorThief.getColor(coverImgTemp);
+				cont = colorArray.join(',');
+				// console.log(cont);
 				$player.css({
 					background: 'rgba(' + cont + ',.8)'
 				});
@@ -636,8 +643,8 @@ function netmusic() {
 				$lk.css({
 					background: 'rgba(' + cont + ',.3)'
 				});
-			},
-			error: function () {
+			} catch(e) {
+				console.log(e);
 				// var contEr = '108, 105, 113';
 				var contEr = Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256);
 				$player.css({
@@ -652,8 +659,28 @@ function netmusic() {
 				$lk.css({
 					background: 'rgba(' + contEr + ',.3)'
 				});
+				$(".myhk_pjax_loading_frame,.myhk_pjax_loading").hide();
 			}
-		})
+		}
+
+		coverImgTemp.error = function () {
+			// var contEr = '108, 105, 113';
+			var contEr = Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256);
+			$player.css({
+				background: 'rgba(' + contEr + ',.8)'
+			});
+			$player1.css({
+				background: 'rgba(' + contEr + ',.3)'
+			});
+			$tips.css({
+				background: 'rgba(' + contEr + ',.6)'
+			});
+			$lk.css({
+				background: 'rgba(' + contEr + ',.3)'
+			});
+			$(".myhk_pjax_loading_frame,.myhk_pjax_loading").hide();
+		}
+
 	};
 	coverImg.error = function () {
 		setTimeout(function () {
