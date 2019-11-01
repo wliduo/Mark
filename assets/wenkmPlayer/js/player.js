@@ -84,7 +84,7 @@ if ((top.location != self.location)) {
 		$cover = $('.cover', $player),
 		$songTime = $(".time", $player),
 		$songList = $('.song-list .list', $player);
-		$albumList = $('.album-list', $player),
+	$albumList = $('.album-list', $player),
 		$songFrom = $('.player .artist', $player),
 		$songFrom1 = $('.player .artist1', $player),
 		$songFrom2 = $('.player .moshi', $player),
@@ -174,6 +174,32 @@ if ((top.location != self.location)) {
 								$(".switch-default").css("right", "65px");
 							}
 						}
+					},
+					error: function (XMLHttpRequest, textStatus, errorThrown) {
+						// console.log(XMLHttpRequest.responseText);
+						var lrctext = XMLHttpRequest.responseText;
+						if (typeof (lrctext) == 'undefined') {
+							songFrom44 = ' - 暂无歌词', $songFrom3.html('<i class="fa fa-outdent"></i> 暂无歌词');
+							$(".switch-ksclrc").hide();
+							$(".switch-down").css("right", "35px");
+							$(".switch-default").css("right", "65px");
+						} else {
+							if (lrctext.indexOf('[00') >= 0) {
+								setTimeout(function () {
+									if (!$('#wenkmLrc').hasClass('hide')) {
+										songFrom44 = ' - Lrc歌词获取成功'
+									} else {
+										songFrom44 = ' - Lrc歌词已关闭'
+									};
+									wenkmLrc.lrc.format(lrctext);
+								}, 500);
+							} else {
+								songFrom44 = ' - 暂无歌词', $songFrom3.html('<i class="fa fa-outdent"></i> 暂无歌词');
+								$(".switch-ksclrc").hide();
+								$(".switch-down").css("right", "35px");
+								$(".switch-default").css("right", "65px");
+							}
+						}
 					}
 				});
 			}, 500);
@@ -241,7 +267,7 @@ if ((top.location != self.location)) {
 	}
 
 	var cicleTime = null;
-	$cover.html('<img src="https://dolyw.gitee.io/reader/Image/headt.png">');
+	$cover.html('<img id="headImage" src="https://dolyw.gitee.io/reader/Image/headt.png">');
 	$songName.html('<a style="color:#f00">初始化失败</a>');
 	$songFrom.html('<a href="https://dolyw.com" title="随心" target="_blank" style="color:#f00">随心</a>');
 	$songFrom1.html('<a style="color:#f00">音乐播放器</a>');
@@ -318,7 +344,7 @@ if ((top.location != self.location)) {
 		error: function () {
 			clearInterval(cicleTime);
 			$player.removeClass('playing');
-			wenkmTips.show(aplist[songId].artist + ' - ' + aplist[songId].name + ' - 资源获取失败');
+			wenkmTips.show(aplist[songId].author + ' - ' + aplist[songId].title + ' - 资源获取失败');
 			setTimeout(function () {
 				$cover.removeClass('coverplay')
 			}, 1000);
@@ -394,7 +420,7 @@ if ((top.location != self.location)) {
 			// 当前专辑的歌曲列表高亮当前项
 			$('[data-album=' + albumId + ']').find('li').eq(songId).addClass(cur).find('.artist').html('暂停播放&nbsp;>&nbsp;').parent().siblings().removeClass(cur).find('.artist').html('').parent();
 		};
-		wenkmTips.show('暂停播放 - ' + aplist[songId].artist + ' - ' + aplist[songId].name);
+		wenkmTips.show('暂停播放 - ' + aplist[songId].author + ' - ' + aplist[songId].title);
 		$cover.removeClass('coverplay');
 		audio.pause()
 	});
@@ -405,7 +431,7 @@ if ((top.location != self.location)) {
 			// 当前专辑的歌曲列表高亮当前项
 			$('[data-album=' + albumId + ']').find('li').eq(songId).addClass(cur).find('.artist').html('当前播放&nbsp;>&nbsp;').parent().siblings().removeClass(cur).find('.artist').html('').parent();
 		};
-		wenkmTips.show('开始播放 - ' + aplist[songId].artist + ' - ' + aplist[songId].name);
+		wenkmTips.show('开始播放 - ' + aplist[songId].author + ' - ' + aplist[songId].title);
 		$cover.addClass('coverplay');
 		audio.play()
 	});
@@ -536,7 +562,7 @@ if ((top.location != self.location)) {
 				// 头部信息
 				$('.musicheader', $albumList).html('我的音乐列表' + '' + '(' + songTotal + ')');
 				for (var i = 0; i < songTotal; i++) {
-					songList += '<li title="' + aplist[i].artist + ' - ' + aplist[i].name + '"><span class="index">' + (i + 1) + '</span>' + '<span class="artist"></span>' + aplist[i].name + '</li>';
+					songList += '<li title="' + aplist[i].author + ' - ' + aplist[i].title + '"><span class="index">' + (i + 1) + '</span>' + '<span class="artist"></span>' + aplist[i].title + '</li>';
 				};
 				$('.list', $albumList).html('<ul>' + songList + '</ul>').mCustomScrollbar();;
 				// 标记当前显示的专辑ID（高亮显示时有用）
@@ -554,7 +580,7 @@ if ((top.location != self.location)) {
 					// 已选播放状态禁止点击
 					if ($(this).hasClass(cur)) {
 						$(".myhk_pjax_loading_frame,.myhk_pjax_loading").hide();
-						wenkmTips.show('正在播放 - ' + aplist[songId].artist + ' - ' + aplist[songId].name);
+						wenkmTips.show('正在播放 - ' + aplist[songId].author + ' - ' + aplist[songId].title);
 					} else {
 						// 得到歌曲ID
 						songId = $(this).index();
@@ -593,22 +619,52 @@ function LimitStr(str, num, t) {
 	return re;
 }
 
+var contErArray = [
+	'17, 16, 45',
+	'5,40,70',
+	'103, 82, 116',
+	'8, 164, 151',
+	'78, 92, 149',
+	'74, 72, 75',
+	/* '206, 192, 203', */
+	'57, 62, 40',
+	'114, 121, 168',
+	'81, 102, 114',
+	'106, 65, 56',
+	'50, 59, 85',
+	'23, 46, 82',
+	/* '39, 168, 226', */
+	'1,59,123'
+];
+var colorIndex = 0;
+// 刷新随机数
+function randomColorIndex() {
+	// 随机数不会和上一次重复，如果获取和上一次相同就重新获取，直到不同为止
+	var index = Math.floor(contErArray.length * Math.random());
+	while (colorIndex == index) {
+		index = Math.floor(contErArray.length * Math.random());
+	}
+	colorIndex = index
+}
+
 function netmusic() {
 	if (startIndex) {
-		console.log(aplist[songId]);
+		// console.log(aplist[songId]);
 		startIndex = false;
 	}
 	audio.src = aplist[songId].url;
 	lrcurl = aplist[songId].lrc;
 	// 歌曲名称
-	$songName.html('<span title="' + aplist[songId].artist + ' - ' + aplist[songId].name + '">' + LimitStr(aplist[songId].name + '</span>'));
+	$songName.html('<span title="' + aplist[songId].author + ' - ' + aplist[songId].title + '">' + LimitStr(aplist[songId].title + '</span>'));
 	// 歌手及专辑
-	$songFrom.html('<span title="' + aplist[songId].artist + '">' + LimitStr(aplist[songId].artist) + '</span>');
-	$songFrom1.html('<span title="' + aplist[songId].artist + '">' + LimitStr(aplist[songId].artist) + '</span>');
+	$songFrom.html('<span title="' + aplist[songId].author + '">' + LimitStr(aplist[songId].author) + '</span>');
+	$songFrom1.html('<span title="' + aplist[songId].author + '">' + LimitStr(aplist[songId].author) + '</span>');
 	allmusic();
 	// 封面图案
 	var coverImg = new Image();
-	coverImg.src = aplist[songId].cover;
+	// 跨域
+	// coverImg.crossOrigin = 'Anonymous';
+	coverImg.src = aplist[songId].pic;
 	$cover.addClass('changing');
 	coverImg.onload = function () {
 		setTimeout(function () {
@@ -618,17 +674,41 @@ function netmusic() {
 			$cover.removeClass('changing');
 		}, 100);
 
-		var coverImgTemp = new Image();
+		// 刷新随机数
+		randomColorIndex();
+		// var contEr = contErArray[0];
+		var contEr = contErArray[colorIndex];
+
+		/* var colorThief = new ColorThief();
+		// 获取主颜色
+		var colorArray = colorThief.getColor(document.querySelector('#headImage'));
+		var contEr = colorArray.join(','); */
+
+		$player.css({
+			background: 'rgba(' + contEr + ',.8)'
+		});
+		$player1.css({
+			background: 'rgba(' + contEr + ',.3)'
+		});
+		$tips.css({
+			background: 'rgba(' + contEr + ',.6)'
+		});
+		$lk.css({
+			background: 'rgba(' + contEr + ',.3)'
+		});
+		$(".myhk_pjax_loading_frame,.myhk_pjax_loading").hide();
+
+		/* var coverImgTemp = new Image();
 		// 跨域
 		coverImgTemp.crossOrigin = 'Anonymous';
-		coverImgTemp.src = 'https://cors-anywhere.herokuapp.com/' + coverImg.src;
+		coverImgTemp.src = coverImg.src;
 
 		coverImgTemp.onload = function () {
 			try {
 				var cont = '108, 105, 113';
 				var colorThief = new ColorThief();
 				// 获取主颜色
-				var colorArray = colorThief.getColor(coverImgTemp);
+				var colorArray = colorThief.getColor(document.querySelector('#img'));
 				cont = colorArray.join(',');
 				// console.log(cont);
 				$player.css({
@@ -643,7 +723,7 @@ function netmusic() {
 				$lk.css({
 					background: 'rgba(' + cont + ',.3)'
 				});
-			} catch(e) {
+			} catch (e) {
 				console.log(e);
 				// var contEr = '108, 105, 113';
 				var contEr = Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256);
@@ -679,7 +759,7 @@ function netmusic() {
 				background: 'rgba(' + contEr + ',.3)'
 			});
 			$(".myhk_pjax_loading_frame,.myhk_pjax_loading").hide();
-		}
+		} */
 
 	};
 	coverImg.error = function () {
@@ -688,23 +768,24 @@ function netmusic() {
 		}, 800);
 		coverImg.src = "https://dolyw.gitee.io/reader/Image/headt.png";
 		setTimeout(function () {
-			wenkmTips.show(aplist[songId].artist + ' - ' + aplist[songId].name + ' - 图片获取失败');
+			wenkmTips.show(aplist[songId].author + ' - ' + aplist[songId].title + ' - 图片获取失败');
 		}, 4000);
 	};
+	coverImg.id = "headImage";
 	$cover.html(coverImg);
 	// 设置音量
 	audio.volume = volume;
 	// 开始播放
-	wenkmTips.show('开始播放 - ' + aplist[songId].artist + ' - ' + aplist[songId].name);
+	wenkmTips.show('开始播放 - ' + aplist[songId].author + ' - ' + aplist[songId].title);
 	playPromise = audio.play();
 	if (playPromise) {
 		playPromise.then(() => {
 			// 音频加载成功，音频的播放需要耗时
 			// var t = audio.duration;
-			// console.log('当前播放 - ' + aplist[songId].artist + ' - ' + aplist[songId].name + ' - ' + Math.floor(t / 60) + ":" + (t % 60 / 100).toFixed(2).slice(-2));
+			// console.log('当前播放 - ' + aplist[songId].author + ' - ' + aplist[songId].title + ' - ' + Math.floor(t / 60) + ":" + (t % 60 / 100).toFixed(2).slice(-2));
 		}).catch((e) => {
 			// 音频加载出现问题
-			wenkmTips.show('浏览器限制音乐自动播放(需要点击播放) - ' + aplist[songId].artist + ' - ' + aplist[songId].name);
+			wenkmTips.show('浏览器限制音乐自动播放(需要点击播放) - ' + aplist[songId].author + ' - ' + aplist[songId].title);
 			console.log('浏览器限制音乐自动播放(需要点击播放)');
 		});
 	}
