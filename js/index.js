@@ -416,11 +416,13 @@ var myHome = new Vue({
                 }, 8888);
             }).catch((err) => {
                 console.error(`在更新一言时捕获错误， 错误信息: ${err.message}. 当前时间: ${new Date().toISOString()}`);
-                this.loveHitokoto();
+                setTimeout(() => {
+                    this.loveHitokoto()
+                }, 3333);
             });
         },
         getHitokoto () {
-            fetch("https://api.fczbl.vip/hitokoto/?encode=json").then(function (response) {   
+            fetch("https://v1.hitokoto.cn?encode=json").then(function (response) {   
                 return response.json();
             }).then((data) => {
                 // console.log(data)
