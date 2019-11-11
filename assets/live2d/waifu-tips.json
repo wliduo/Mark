@@ -26,7 +26,10 @@
         },
         "referrer_hostname": {
             "example.com": ["示例网站"],
-            "www.fghrsh.net": ["FGHRSH 的博客"]
+            "www.fghrsh.net": ["FGHRSH 的博客"],
+            "dolyw.com": ["dolyw的垃圾站子"],
+            "www.dolyw.com": ["dolyw的垃圾站子"],
+            "mark.dolyw.com": ["dolyw的垃圾站子"]
         },
         "model_message": {
             "1": ["来自 Potion Maker 的 Pio 酱 ~"],
