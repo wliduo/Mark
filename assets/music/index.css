@@ -1,0 +1,422 @@
+html,
+body,
+p,
+ul,
+li,
+h1 {
+    margin: 0;
+    padding: 0;
+    font-weight: initial
+}
+
+ul {
+    list-style: none
+}
+
+html {
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: inherit
+}
+
+*:before,
+*:after {
+    box-sizing: inherit
+}
+
+img {
+    height: auto;
+    max-width: 100%
+}
+
+a {
+    text-decoration: none
+}
+
+a:hover {
+    text-decoration: none
+}
+
+.col-lg-1,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-md-1,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-sm-1,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-xs-1,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+}
+
+/* Main */
+body {
+    font-family: Lucida Grande, Lucida Sans Unicode, Lucida, Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0 1em;
+    background-color: #3d3b4f;
+}
+
+#bg,
+body {
+    height: 100%;
+    background-size: cover;
+}
+
+#bg {
+    -webkit-filter: brightness(0.9);
+    -ms-filter: brightness(0.9);
+    -moz-filter: brightness(0.9);
+    filter: brightness(0.9);
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -10;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-position: center center;
+}
+
+section {
+    opacity: 0.90;
+    /* filter: brightness(0.9); */
+}
+
+input,
+select,
+button {
+    opacity: 0.95;
+}
+
+/* #aplayer1, #aplayer2, #aplayer3, #aplayer4 {
+    filter: brightness(0.9);
+} */
+
+.aplayer.aplayer-withlist .aplayer-icon-order,
+.aplayer.aplayer-withlist .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon.aplayer-icon-menu {
+    display: inline;
+}
+
+.aplayer.aplayer-arrow .aplayer-icon-loop,
+.aplayer.aplayer-arrow .aplayer-icon-order,
+.aplayer.aplayer-mobile .aplayer-icon-volume-down {
+    display: inline;
+}
+
+main {
+    position: relative
+}
+
+main .content {
+    display: flex;
+    margin: 2em 1em;
+    background: hsla(0, 0%, 100%, .3);
+    border-radius: 5px;
+    animation: content .5s 2.2s both;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .3);
+    overflow: hidden;
+    width: 50em;
+    height: 30em;
+}
+
+main .controller {
+    display: flex;
+    margin: 2em 1em;
+    background: hsla(0, 0%, 100%, .3);
+    border-radius: 5px;
+    animation: content .5s 2.2s both;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .3);
+    overflow: hidden;
+    width: 33em;
+    height: 4em;
+}
+
+.controllerRight {
+    width: 45%;
+    background: rgba(1, 59, 123, 0.8);
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.controllerRight .controllerCopyRight {
+    padding: 0.2em;
+    color: #fff;
+    font-size: 13pt
+}
+
+.controllerRight a {
+    padding: 0.8em;
+    color: #fff;
+}
+
+.controllerRight a:hover {
+    color: rgb(175, 250, 0);
+}
+
+.controllerLeft {
+    width: 55%;
+    background: rgba(1, 59, 123, 0.6);
+    /* border-left: 1px solid #FFF; */
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.controllerLeft .controllerCopyLeft {
+    padding: 0.2em;
+    color: #fff;
+    font-size: 13pt
+}
+
+.controllerLeft a {
+    padding: 0.8em;
+    color: #fff;
+}
+
+.controllerLeft a:hover {
+    color: rgb(175, 250, 0);
+}
+
+/* Left Box */
+.right {
+    width: 20%;
+    background: rgba(1, 59, 123, 0.6);
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.right .avatar img {
+    border-radius: 100%;
+    border: 5px solid #fff
+}
+
+.right .menu {
+    margin-top: 2em;
+    flex: 1
+}
+
+.right .menu li {
+    margin-top: 1em
+}
+
+.right .menu li a {
+    color: #fff;
+    cursor: pointer
+}
+
+.right .menu li a.active {
+    font-size: 1.3em
+}
+
+.right .copyright {
+    color: #fff;
+    font-size: 11pt
+}
+
+.right .copyright a {
+    padding: 0.2em;
+    color: #fff;
+}
+
+.right .copyright a:hover {
+    color: rgb(175, 250, 0);
+}
+
+/* Right Box */
+.left {
+    flex: 1;
+    padding: 0.5em;
+}
+
+.left section {
+    display: none
+}
+
+.left section.active {
+    display: block
+}
+
+section {
+    -webkit-animation: fadenum .5s;
+    animation: fadenum .5s
+}
+
+.head {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: #fff
+}
+
+.head .info {
+    text-shadow: 2px 1px 2px #666;
+}
+
+.head .info span {
+    padding: 0.5em;
+}
+
+footer {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: #fff
+}
+
+footer #hitokoto {
+    text-shadow: 2px 1px 2px #666
+}
+
+/* And something else */
+.fa-heart {
+    color: #d43f57
+}
+
+.copyright-mobile {
+    display: none;
+    font-size: 12px
+}
+
+.copyright-mobile a {
+    color: white
+}
+
+/* Hack for mobile */
+@media(max-width:768px) {
+
+    /* Main */
+    .left {
+    overflow: hidden;
+    padding: 0.2em;
+    /* display: table-footer-group; */
+    /* display: table-row-group; */
+    }
+
+    .right {
+    display: none;
+    padding: 1em;
+    }
+
+    .left,
+    .right {
+    display: block;
+    width: 100%;
+    }
+
+    .right {
+    border-radius: 5px 5px 0 0;
+    /* display: table-header-group; */
+    }
+
+    .right .menu {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0
+    }
+
+    .right .menu li {
+    width: 50%;
+    margin-top: .5em;
+    display: inline-block
+    }
+
+    .avatar {
+    margin-top: -4em
+    }
+
+    .avatar img {
+    width: 75pt
+    }
+
+    main {
+    width: 100%;
+    max-width: 30em
+    }
+
+    main .content {
+    display: block;
+    margin: 5em 0 1em;
+    width: 100%;
+    height: 35em;
+    overflow: visible
+    }
+
+    footer {
+    margin-bottom: 1em
+    }
+
+    footer #hitokoto {
+    font-size: 80%
+    }
+
+    .copyright {
+    display: none
+    }
+
+    .copyright-mobile {
+    display: block
+    }
+}
