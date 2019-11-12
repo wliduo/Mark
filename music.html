@@ -27,7 +27,7 @@
 <body>
 	<div id="bg"></div>
 	<main>
-		<div id="content" class="content" style="display: none;">
+		<div id="content" class="content">
 
 			<div id="left" class="left">
 				<section id="list" class="active">
@@ -97,13 +97,13 @@
 
 		</div>
 
-		<div id="head" class="head">
+		<div id="head" class="head" style="display: none;">
 			<p class="info">
 				<span id="author" class="author"></span>-<span id="title" class="title"></span>
 			</p>
 		</div>
 
-		<div id="contorller" class="controller">
+		<div id="contorller" class="controller" style="display: none;">
 			<div class="controllerRight">
 				<div class="controllerCopyRight">
 					<a id="back" href="javascript:;" title="上一首" onclick="backMusic(this)" style="display: none;">
@@ -145,6 +145,10 @@
 		</footer>
 
 	</main>
+	<!-- <form target="form" action="http://47-107-145-182.nhost.00cdn.com/api/v1/bing/random" enctype="multipart/form-data" method="get" style="display:none">
+		<button type="submit" id="submit" style="display:none">提交</button>
+	</form>
+	<iframe name="form" id="form" style="display:none"></iframe> -->
 	<!-- wenkmPlayer Start -->
 	<div id="wangPlayer" style="display: none;"></div>
 	<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/wliduo/Mark@master/assets/lib/aplist.js"></script> -->

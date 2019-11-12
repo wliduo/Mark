@@ -1,9 +1,6 @@
 $(document).ready(function () {
     // 竖屏需要把left移动到right后面
     if (getElementStyle(document.getElementById('content'), "display") == 'block') {
-        $("#content").show();
-        $("#contorller").hide();
-        $("#head").hide();
         $("#left").insertAfter($("#right"));
         $("#right").show();
     }
@@ -92,8 +89,13 @@ function switchBg() {
 }
 // 切换Bing背景
 function switchBing() {
-    // wenkmTips.show('功能正在开发中');
-    if (switchFlag) {
+    wenkmTips.show('功能正在开发中');
+    /* $("#submit").click();
+    $("#form").load(function () {
+        var text = $("#form").contents().find("body").text();
+        console.log(document.getElementById('form').contentWindow.document);
+    }); */
+    /* if (switchFlag) {
         wenkmTips.show('正在切换请稍后');
         return false;
     }
@@ -118,7 +120,7 @@ function switchBing() {
             $('#source').html(result.date + ' - ' + result.title);
             typing.start();
         }
-    });
+    }); */
 }
 
 function openBg() {
@@ -150,6 +152,9 @@ var listMaxHeightSearch = '14.8em';
 if (!isMobile()) {
     listMaxHeight = '22em';
     listMaxHeightSearch = '19em';
+    $("#content").hide();
+    $("#contorller").show();
+    $("#head").show();
     try {
         // 加载wenkmPlayerc
         $.ajax({ url: 'https://cdn.jsdelivr.net/gh/wliduo/Mark@master/assets/wenkmPlayer/js/player.js?v=123', dataType: "script", cache: true, async: false });
