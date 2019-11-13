@@ -89,19 +89,14 @@ function switchBg() {
 }
 // 切换Bing背景
 function switchBing() {
-    wenkmTips.show('功能正在开发中');
-    /* $("#submit").click();
-    $("#form").load(function () {
-        var text = $("#form").contents().find("body").text();
-        console.log(document.getElementById('form').contentWindow.document);
-    }); */
-    /* if (switchFlag) {
+    // wenkmTips.show('功能正在开发中');
+    if (switchFlag) {
         wenkmTips.show('正在切换请稍后');
         return false;
     }
     switchFlag = true;
     wenkmTips.show('切换Bing壁纸');
-    $.get("http://47-107-145-182.nhost.00cdn.com/api/v1/bing/random", function (result) {
+    /* $.get("http://47-107-145-182.nhost.00cdn.com/api/v1/bing/random", function (result) {
         // console.log(result);
         var img = new Image();
         img.src = result.url;
@@ -120,7 +115,46 @@ function switchBing() {
             $('#source').html(result.date + ' - ' + result.title);
             typing.start();
         }
+    }).fail(function () {
+        console.log("切换Bing壁纸错误");
+        wenkmTips.show("切换Bing壁纸错误");
+        switchFlag = false;
     }); */
+    $.ajax({
+        url: 'https://bing.ioliu.cn/v1/rand?type=json&w=1920&h=1080',
+        type: 'get',
+        dataType: 'jsonp'/* ,
+        jsonpCallback: 'aa' */
+    }).done(function (result) {
+        var data = result.data;
+        // console.log(data);
+        if (data && data.url) {
+            var img = new Image();
+            // console.log(data.url);
+            img.src = data.url;
+            img.onerror = function () {
+                switchFlag = false;
+            }
+            img.onload = function () {
+                $("#bg").hide();
+                document.getElementById('bg').style.backgroundPosition = "center 0";
+                document.getElementById('bg').style.backgroundImage = "url(" + data.url + ")";
+                $("#bg").fadeIn(1000);
+                imgUrl = data.url;
+                switchFlag = false;
+                // 刷新一言
+                var text = data.enddate + ' - ' + data.copyright;
+                wenkmTips.show(text);
+                $('#source').html(text);
+                $('#hitokoto').html(text);
+                $('#hitokoto').attr("title", text);
+            }
+        }
+    }).fail(function () {
+        console.log("切换Bing壁纸错误");
+        wenkmTips.show("切换Bing壁纸错误");
+        switchFlag = false;
+    });
 }
 
 function openBg() {
@@ -644,13 +678,16 @@ function gethitokoto() {
 }
 
 function write(text) {
-    if (text.length < 25) {
+    /* if (text.length < 25) {
         $('#hitokoto').html('');
         $('#source').html(text);
         typing.start();
     } else {
         gethitokoto();
-    }
+    } */
+    $('#hitokoto').html('');
+    $('#source').html(text);
+    typing.start();
 }
 
 gethitokoto();
