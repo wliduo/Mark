@@ -67,15 +67,19 @@ function getList() {
         ajax.onreadystatechange = function () {
             if (ajax.readyState == 4 && ajax.status == 200) {
                 // 步骤五: 如果能够进到这个判断 说明 数据 完美的回来了 并且请求的页面是存在的
-                // console.log(ajax.responseText);
-                apLove = JSON.parse(ajax.responseText);
-                apList = apList.concat(apLove);
+                try {
+                    // console.log(ajax.responseText);
+                    apLove = JSON.parse(ajax.responseText);
+                    apList = apList.concat(apLove);
+                } catch(e) {
+                    console.log("获取QQ音乐歌单异常");
+                }
             }
         }
         // 步骤四: 发送请求
         ajax.send();
     } catch (err) {
-
+        console.log("获取QQ音乐歌单异常");
     } finally {
 
     }
@@ -100,29 +104,33 @@ function getLove() {
         ajax.onreadystatechange = function () {
             if (ajax.readyState == 4 && ajax.status == 200) {
                 // 步骤五: 如果能够进到这个判断 说明 数据 完美的回来了 并且请求的页面是存在的
-                // console.log(ajax.responseText);
-                apList = JSON.parse(ajax.responseText);
-                // apList.insert(0, myList[0]);
-                apList = apList.concat(myList);
+                try {
+                    // console.log(ajax.responseText);
+                    apList = JSON.parse(ajax.responseText);
+                    // apList.insert(0, myList[0]);
+                    apList = apList.concat(myList);
+                } catch(e) {
+                    console.log("获取音乐歌单异常");
+                    apFlag = false;
+                }
             } else {
+                console.log("获取音乐歌单异常");
                 apFlag = false;
             }
         }
         // 步骤四: 发送请求
         ajax.send();
-
         // 获取QQ音乐歌单
         getList();
-
+    } catch (err) {
+        console.log("获取音乐歌单异常");
+        return myList;
+    } finally {
         if (apFlag) {
             return apList;
         } else {
             return myList;
         }
-    } catch (err) {
-        return myList;
-    } finally {
-
     }
 }
 
@@ -131,24 +139,27 @@ var bingPic = {
     "date": 20181228,
     "title": "",
     "copyright": "",
-    "url": "https://bing.ioliu.cn/v1/rand?h=1080&w=1920"
+    "url": ""
 };
 
-var bingApi = "https://bing.ioliu.cn/v1";
+var bingApi1 = "https://bing.ioliu.cn/v1";
 var bingApi2 = "https://bing.ioliu.cn/v1/rand";
 var bingApi3 = "https://cn.bing.com/cnhp/coverstory";
 // var bingSize = "?h=1080&w=1920";
 // var bingD = Math.floor(1000 * Math.random());
-// var bingUrl = bingApi + bingSize + "&d=" + bingD;
+// var bingUrl = bingApi1 + bingSize + "&d=" + bingD;
+var bingApi4 = "https://bing.ioliu.cn/v1?type=json&h=1080&w=1920";
+var bingApi5 = "https://bing.ioliu.cn/v1/rand?type=json&w=1920&h=1080";
 
 // 加速接口
-var bingApi4 = "https://api.i-meto.com/api/v1/bing/random";
+var bingCDN = "https://api.i-meto.com/api/v1/bing/random";
 var bingToday = "https://api.i-meto.com/api/v1/bing/random?new";
 
-function getPic(bingRandom) {
-    var bingUrl = bingToday;
-    if (bingRandom) {
-        bingUrl = bingApi4;
+function getPic(todayFlag) {
+    var bingUrl = bingCDN;
+    // true获取当天Bing壁纸
+    if (todayFlag) {
+        bingUrl = bingToday;
     }
     try {
         // 步骤一: 创建异步对象
@@ -166,14 +177,18 @@ function getPic(bingRandom) {
         ajax.onreadystatechange = function () {
             if (ajax.readyState == 4 && ajax.status == 200) {
                 // 步骤五: 如果能够进到这个判断 说明 数据 完美的回来了 并且请求的页面是存在的
-                // console.log(ajax.responseText);
-                bingPic = JSON.parse(ajax.responseText);
+                try {
+                    // console.log(ajax.responseText);
+                    bingPic = JSON.parse(ajax.responseText);
+                } catch(e) {
+                    console.log("getPic()异常");
+                }
             }
         }
         // 步骤四: 发送请求
         ajax.send();
     } catch (err) {
-
+        console.log("getPic()异常");
     } finally {
         return bingPic;
     }

@@ -37,16 +37,14 @@ var imgUrlArray = [
     'https://cdn.jsdelivr.net/gh/wliduo/CDN@master/wallpaper/201911/20191107005.jpg',
     'https://cdn.jsdelivr.net/gh/wliduo/CDN@master/wallpaper/201911/20191107010.jpg',
     'https://dolyw.gitee.io/reader/Image/201810/normal/20010.png',
-    'https://dolyw.gitee.io/reader/Image/201811/normal/02015.png',
-    'https://dolyw.gitee.io/reader/Image/201810/normal/10005.png',
     'https://dolyw.gitee.io/reader/Image/201811/normal/01005.png',
+    'https://dolyw.gitee.io/reader/Image/201811/normal/02015.png',
     'https://dolyw.gitee.io/reader/Image/201811/normal/04040.png',
-    'https://dolyw.gitee.io/reader/Image/201811/normal/05010.png',
     'https://dolyw.gitee.io/reader/Image/201811/normal/05025.png',
     'https://cdn.jsdelivr.net/gh/wliduo/CDN@master/wallpaper/201911/20191109005.png'
 ];
 
-var randomIndex = 10;
+var randomIndex = 2;
 // 刷新随机数
 function switchRandomIndex() {
     // 随机数不会和上一次重复，如果获取和上一次相同就重新获取，直到不同为止
@@ -96,65 +94,70 @@ function switchBing() {
     }
     switchFlag = true;
     wenkmTips.show('切换Bing壁纸');
-    /* $.get("http://47-107-145-182.nhost.00cdn.com/api/v1/bing/random", function (result) {
-        // console.log(result);
-        var img = new Image();
-        img.src = result.url;
-        img.onload = function () {
-            $("#bg").hide();
-            document.getElementById('bg').style.backgroundPosition = "center 0";
-            document.getElementById('bg').style.backgroundImage = "url(" + result.url + ")";
-            $("#bg").fadeIn(1000);
-            imgUrl = result.url;
-            switchFlag = false;
-            // 刷新一言
-            var text = result.date + ' - ' + result.title + ' ' + result.copyright;
-            wenkmTips.show(text);
-            $('#hitokoto').html('');
-            $('#hitokoto').attr("title", text);
-            $('#source').html(result.date + ' - ' + result.title);
-            typing.start();
+    // 请求接口一
+    $.get(bingCDN, function (data) {
+        // console.log(data);
+        if (data && data.url) {
+            data.enddate = data.date;
+            data.copyright = data.title + ' ' + data.copyright;
+            picLoad(data);
+        } else {
+            console.log("切换Bing壁纸错误");
+            // 请求接口二
+            switchBingTo();
         }
     }).fail(function () {
         console.log("切换Bing壁纸错误");
-        wenkmTips.show("切换Bing壁纸错误");
-        switchFlag = false;
-    }); */
+        // 请求接口二
+        switchBingTo();
+    });
+}
+
+function switchBingTo() {
     $.ajax({
-        url: 'https://bing.ioliu.cn/v1/rand?type=json&w=1920&h=1080',
+        url: bingApi5,
         type: 'get',
-        dataType: 'jsonp'/* ,
-        jsonpCallback: 'aa' */
+        dataType: 'jsonp'
     }).done(function (result) {
         var data = result.data;
         // console.log(data);
         if (data && data.url) {
-            var img = new Image();
-            // console.log(data.url);
-            img.src = data.url;
-            img.onerror = function () {
-                switchFlag = false;
-            }
-            img.onload = function () {
-                $("#bg").hide();
-                document.getElementById('bg').style.backgroundPosition = "center 0";
-                document.getElementById('bg').style.backgroundImage = "url(" + data.url + ")";
-                $("#bg").fadeIn(1000);
-                imgUrl = data.url;
-                switchFlag = false;
-                // 刷新一言
-                var text = data.enddate + ' - ' + data.copyright;
-                wenkmTips.show(text);
-                $('#source').html(text);
-                $('#hitokoto').html(text);
-                $('#hitokoto').attr("title", text);
-            }
+            picLoad(data);
+        } else {
+            console.log("切换Bing壁纸错误2");
+            wenkmTips.show("切换Bing壁纸错误，请重试");
+            switchFlag = false;
         }
     }).fail(function () {
-        console.log("切换Bing壁纸错误");
-        wenkmTips.show("切换Bing壁纸错误");
+        console.log("切换Bing壁纸错误2");
+        wenkmTips.show("切换Bing壁纸错误，请重试");
         switchFlag = false;
     });
+}
+
+function picLoad(data) {
+    // console.log(data);
+    var img = new Image();
+    img.src = data.url;
+    img.onerror = function () {
+        console.log("切换Bing壁纸错误1");
+        wenkmTips.show("切换Bing壁纸错误，请重试");
+        switchFlag = false;
+    }
+    img.onload = function () {
+        $("#bg").hide();
+        document.getElementById('bg').style.backgroundPosition = "center 0";
+        document.getElementById('bg').style.backgroundImage = "url(" + data.url + ")";
+        $("#bg").fadeIn(1000);
+        imgUrl = data.url;
+        switchFlag = false;
+        // 刷新一言
+        var text = data.enddate + ' - ' + data.copyright;
+        wenkmTips.show(text);
+        $('#source').html(text);
+        $('#hitokoto').html(text);
+        $('#hitokoto').attr("title", text);
+    }
 }
 
 function openBg() {
@@ -282,42 +285,19 @@ function ap3Init() {
                 loveFlag = false;
                 var array = JSON.parse(list);
                 // 获取QQ音乐我喜欢的音乐列表
-                try {
-                    // 步骤一: 创建异步对象
-                    var ajax = new XMLHttpRequest();
-                    if (window.XMLHttpRequest) {
-                        ajax = new XMLHttpRequest();
-                    } else {
-                        // IE6及其以下版本浏览器
-                        ajax = new ActiveXObject('Microsoft.XMLHTTP');
-                    }
-                    // 步骤二: 设置请求的url参数 参数一是请求的类型 参数二是请求的url 可以带参数 动态的传递参数starName到服务端
-                    // ajax.open('get', 'getStar.php?starName='+name);
-                    ajax.open('get', api + '?server=tencent&type=playlist&id=6804330872', false);
-                    // 步骤三: 注册事件 onreadystatechange 状态改变就会调用 定义返回触发的函数 定义在send之前 不然同步请求就出问题
-                    ajax.onreadystatechange = function () {
-                        if (ajax.readyState == 4 && ajax.status == 200) {
-                            // 步骤五: 如果能够进到这个判断 说明 数据 完美的回来了 并且请求的页面是存在的
-                            // console.log(ajax.responseText);
-                            if (array.length > 0) {
-                                array = array.concat(JSON.parse(ajax.responseText));
-                                ap3.list.clear();
-                                ap3.list.add(array);
-                            } else {
-                                layer.msg('出现错误，请刷新页面');
-                            }
-                            aplist3 = array;
+                $.ajax({
+                    url: api + '?server=tencent&type=playlist&id=6804330872',
+                    success: function (data) {
+                        if (array.length > 0) {
+                            array = array.concat(JSON.parse(data));
+                            ap3.list.clear();
+                            ap3.list.add(array);
+                        } else {
+                            layer.msg('出现错误，请刷新页面');
                         }
+                        aplist3 = array;
                     }
-                    // 步骤四: 发送请求
-                    ajax.send();
-                }
-                catch (err) {
-                    layer.msg('出现错误，请刷新页面');
-                }
-                finally {
-
-                }
+                });
             }
         });
     }
