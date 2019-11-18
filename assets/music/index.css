@@ -9,6 +9,11 @@ h1 {
     font-weight: initial
 }
 
+body {
+    /* 鼠标默认显示 */
+    cursor: url(https://cdn.jsdelivr.net/gh/wliduo/Index@master/static/cursor.ico), default;
+}
+
 ul {
     list-style: none
 }

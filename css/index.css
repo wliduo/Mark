@@ -284,3 +284,8 @@ header{
     border:1px   solid  #d7d7d7;
 }
 /* Login & Register Page */
+
+body {
+    /* 鼠标默认显示 */
+    cursor: url(https://cdn.jsdelivr.net/gh/wliduo/Index@master/static/cursor.ico), default;
+}
