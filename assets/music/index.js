@@ -199,6 +199,7 @@ if (!isMobile()) {
         console.log('[Error] JQuery is not defined.')
     } finally {
         $(window).load(function () {
+            $('#next').show();
             wenkmTips.show('欢迎访问我的音乐台');
             var arrayInfo = $('#wenkmPlayer .player .infos .song span').attr('title').split('-');
             $('#author').html($.trim(arrayInfo[0]));
@@ -362,6 +363,7 @@ function initController() {
     $('#play').hide();
     $('#pause').show();
     $('#back').show();
+    $('#next').show();
 }
 
 function forwardMusic(btn) {
@@ -749,24 +751,32 @@ if (!isMobile()) {
         clearInterval(lrcTime);
         $('#wenkmLrc').removeClass('show');
         wenkmTips.show('暂停播放');
+        $('#pause').hide();
+        $('#play').show();
     });
 
     ap2.on('pause', function () {
         clearInterval(lrcTime);
         $('#wenkmLrc').removeClass('show');
         wenkmTips.show('暂停播放');
+        $('#pause').hide();
+        $('#play').show();
     });
 
     ap3.on('pause', function () {
         clearInterval(lrcTime);
         $('#wenkmLrc').removeClass('show');
         wenkmTips.show('暂停播放');
+        $('#pause').hide();
+        $('#play').show();
     });
 
     ap4.on('pause', function () {
         clearInterval(lrcTime);
         $('#wenkmLrc').removeClass('show');
         wenkmTips.show('暂停播放');
+        $('#pause').hide();
+        $('#play').show();
     });
 }
 
