@@ -42,7 +42,7 @@
 				<section id="serach">
 					<div class="col-md-12 col-sm-12 col-xs-12"
 						style="padding-top: 5px; padding-bottom: 5px; padding-left: 5px;">
-						<div class="col-md-5 col-sm-5 col-xs-5">
+						<div class="col-md-3 col-sm-3 col-xs-3">
 							<select id="serachType" class="form-control">
 								<option value="netease">网易云音乐</option>
 								<option value="kugou">酷狗音乐</option>
@@ -51,13 +51,14 @@
 								<option value="baidu">百度音乐</option>
 							</select>
 						</div>
-						<div class="col-md-5 col-sm-5 col-xs-5" style="padding-left: 3px;">
+						<div class="col-md-4 col-sm-4 col-xs-4">
 							<input id="serachText" type="text" class="form-control" placeholder="请输入关键字" value="Avicii">
 						</div>
-						<div class="col-md-2 col-sm-2 col-xs-2" style="padding-left: 8px;">
+						<div class="col-md-5 col-sm-5 col-xs-5" style="padding-left: 5px;padding-top: 1px;">
 							<button id="serachBtn" type="button" class="btn btn-primary" onclick="search(this)">
 								<i class="fa fa-search" aria-hidden="true"></i>
 							</button>
+							<button type="button" class="btn btn-danger" onclick="neteaseHot(this)">网易热歌</button>
 						</div>
 					</div>
 					<div class="col-md-12 col-sm-12 col-xs-12">
@@ -68,17 +69,18 @@
 
 			<div id="right" class="right">
 				<div class="avatar">
-					<a href="https://dolyw.com" target="_blank"><img src="https://cdn.jsdelivr.net/gh/wliduo/CDN@master/avatar/01_thn.png"></a>
+					<a href="https://dolyw.com" target="_blank"><img
+							src="https://cdn.jsdelivr.net/gh/wliduo/CDN@master/avatar/01_thn.png"></a>
 				</div>
 				<ul class="menu">
 					<li>
-						<a goto="#list" class="active">列表</a>
+						<a goto="#list" class="active">收藏</a>
 					</li>
 					<li>
 						<a goto="#love">喜欢</a>
 					</li>
 					<li>
-						<a goto="#netease">热歌</a>
+						<a goto="#netease">全部</a>
 					</li>
 					<li>
 						<a goto="#serach">搜索</a>

@@ -221,10 +221,11 @@ const ap1 = new APlayer({
     audio: getLove() */
 });
 
-// 网易云音乐热歌榜
+// 网易云音乐默认全部歌曲
 const ap2 = new APlayer({
     container: document.getElementById('aplayer2'),
     lrcType: 3,
+    order: 'random',
     theme: '#000000',
     listMaxHeight: listMaxHeight
 });
@@ -261,7 +262,8 @@ var aplaying = 'ap1';
 function ap2Init() {
     if (ap2.list.audios.length <= 0) {
         $.ajax({
-            url: api + '?server=netease&type=playlist&id=3778678',
+            // url: api + '?server=netease&type=playlist&id=3778678',
+            url: api + '?server=netease&type=playlist&id=601142810',
             success: function (list) {
                 neteaseFlag = false;
                 var array = JSON.parse(list);
@@ -304,7 +306,10 @@ function ap3Init() {
     }
 }
 
-
+/**
+ * 搜索
+ * @param {*} btn 
+ */
 function search(btn) {
     // 开始执行，先将按钮置为不可用，执行完后设置可用
     btn.disabled = true;
@@ -328,6 +333,31 @@ function search(btn) {
                 ap4.list.add(array);
             } else {
                 layer.msg('没有搜索到任何结果，请切换平台尝试');
+            }
+            aplist4 = array;
+            btn.disabled = false;
+        }
+    });
+}
+
+/**
+ * 网易云音乐热歌
+ * @param {*} btn 
+ */
+function neteaseHot(btn) {
+    // 开始执行，先将按钮置为不可用，执行完后设置可用
+    btn.disabled = true;
+    $.ajax({
+        url: api + '?server=netease&type=playlist&id=3778678',
+        success: function (list) {
+            var array = JSON.parse(list);
+            // console.log(url);
+            // console.log(array);
+            if (array.length > 0) {
+                ap4.list.clear();
+                ap4.list.add(array);
+            } else {
+                layer.msg('获取歌单失败，请重试');
             }
             aplist4 = array;
             btn.disabled = false;

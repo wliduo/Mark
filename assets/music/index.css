@@ -11,7 +11,12 @@ h1 {
 
 body {
     /* 鼠标默认显示 */
-    cursor: url(https://cdn.jsdelivr.net/gh/wliduo/Index@master/static/cursor.gif), default;
+    /* cursor: url(https://cdn.jsdelivr.net/gh/wliduo/Index@master/static/cursor.gif), default; */
+    cursor: url(https://cdn.jsdelivr.net/gh/wliduo/Mark@master/assets/music/default.cur.png), auto !important;
+}
+
+a, li, select, span, button {
+    cursor: url(https://cdn.jsdelivr.net/gh/wliduo/Mark@master/assets/music/pointer.cur.png), auto !important;
 }
 
 ul {
