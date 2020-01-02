@@ -7,42 +7,58 @@ var myList = [
     {
         title: 'Hope',
         author: 'Namie Amuro',
+        name: 'Hope',
+        artist: 'Namie Amuro',
         url: 'https://dolyw.gitee.io/reader/Music/hope.mp3',
         pic: 'https://dolyw.gitee.io/reader/Music/image/hope.png',
+        cover: 'https://dolyw.gitee.io/reader/Music/image/hope.png',
         lrc: 'https://res.dolyw.com/Music/lrc/hope.lrc'
     },
     {
         title: 'unravel',
         author: '凛として時雨',
+        name: 'unravel',
+        artist: '凛として時雨',
         url: 'https://dolyw.gitee.io/reader/Music/unravel.mp3',
         pic: 'https://dolyw.gitee.io/reader/Music/image/xxx.png',
+        cover: 'https://dolyw.gitee.io/reader/Music/image/xxx.png',
         lrc: 'https://res.dolyw.com/Music/lrc/xxx.lrc'
     },
     {
         title: 'unravel - 不插电版',
         author: '凛として時雨',
+        name: 'unravel - 不插电版',
+        artist: '凛として時雨',
         url: 'https://dolyw.gitee.io/reader/Music/unravelno.mp3',
         pic: 'https://dolyw.gitee.io/reader/Music/image/xxx.png',
+        cover: 'https://dolyw.gitee.io/reader/Music/image/xxx.png',
         lrc: 'https://res.dolyw.com/Music/lrc/xxx.lrc'
     },
     {
         title: 'なんでもないや',
         author: 'RADWIMPS',
+        name: 'なんでもないや',
+        artist: 'RADWIMPS',
         url: 'https://dolyw.gitee.io/reader/Music/RADWIMPS.mp3',
         pic: 'https://dolyw.gitee.io/reader/Music/image/xxx.png',
+        cover: 'https://dolyw.gitee.io/reader/Music/image/xxx.png',
         lrc: 'https://res.dolyw.com/Music/lrc/xxx.lrc'
     },
     {
         title: '烟火里的尘埃',
         author: '郁欢',
+        name: '烟火里的尘埃',
+        artist: '郁欢',
         url: 'https://dolyw.gitee.io/reader/Music/yanhuolidechenai.mp3',
         pic: 'https://dolyw.gitee.io/reader/Music/image/yanhuolidechenai.png',
+        cover: 'https://dolyw.gitee.io/reader/Music/image/yanhuolidechenai.png',
         lrc: 'https://res.dolyw.com/Music/lrc/yanhuolidechenai.lrc'
     }
 ];
 
 // var apApi = 'https://api.i-meto.com/api/v1/meting'; API地址切换
-var apApi = 'https://cloud.i-meto.com/meting/api';
+// var apApi = 'https://cloud.i-meto.com/meting/api'; API地址切换
+var apApi = 'https://api.i-meto.com/meting/api';
 var apApi2 = 'https://api.bzqll.com/music/netease/songList?key=579621905';
 
 // 数组插入方法扩展

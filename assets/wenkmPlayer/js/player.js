@@ -4,6 +4,12 @@ var domain = "dolyw.com";
 
 // 获取我自己的歌单
 var aplist = getLove();
+// 属性赋值
+for (var apIndex = 0, apLen = aplist.length; apIndex < apLen; apIndex++) {
+	aplist[apIndex].pic = aplist[apIndex].cover;
+	aplist[apIndex].author = aplist[apIndex].artist;
+	aplist[apIndex].title = aplist[apIndex].name;
+}
 
 // wangPalyer
 var parent = document.getElementById('wangPlayer');
