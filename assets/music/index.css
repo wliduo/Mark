@@ -142,6 +142,13 @@ body {
     background-position: center center;
 }
 
+#musicImg {
+    position: fixed;
+    right: 20px;
+    bottom: 25px;
+    display: none;
+}
+
 section {
     opacity: 0.90;
     /* filter: brightness(0.9); */

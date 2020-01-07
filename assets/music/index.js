@@ -164,11 +164,21 @@ function openBg() {
     window.open(imgUrl, "_blank");
 }
 
+function switchMinions() {
+    if ($('#musicImg').is(":hidden")) {
+        $('#musicImg').show();
+    } else {
+        $('#musicImg').hide();
+    }
+}
+
 // 初始化加载背景
 var img = new Image();
 imgUrl = imgUrlArray[randomIndex];
 if (isMobile()) {
     imgUrl = "https://dolyw.gitee.io/reader/Image/201901/normal/11005.png";
+} else {
+    $('#musicImg').show();
 }
 img.src = imgUrl;
 img.onload = function () {
