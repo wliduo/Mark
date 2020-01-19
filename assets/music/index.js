@@ -316,6 +316,13 @@ function ap3Init() {
     }
 }
 
+// 监听搜索框回车事件
+$("#serachText").keydown(function (e) {
+    if (e.keyCode == 13) {
+        search(document.getElementById("serachBtn"));
+    }
+});
+
 /**
  * 搜索
  * @param {*} btn 
