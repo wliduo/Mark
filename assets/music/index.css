@@ -149,6 +149,15 @@ body {
     display: none;
 }
 
+.aplayer .aplayer-list ol::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: #ccc;
+}
+
+.aplayer .aplayer-list ol::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(156, 154, 154);
+}
+
 section {
     opacity: 0.90;
     /* filter: brightness(0.9); */
