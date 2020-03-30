@@ -291,7 +291,8 @@ main .controller {
 }
 
 .right .menu li a.active {
-    font-size: 1.3em
+    font-size: 1.3em;
+    font-weight: bold;
 }
 
 .right .copyright {
