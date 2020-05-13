@@ -6,9 +6,21 @@ var domain = "dolyw.com";
 var aplist = getLove();
 // 属性赋值
 for (var apIndex = 0, apLen = aplist.length; apIndex < apLen; apIndex++) {
-	aplist[apIndex].pic = aplist[apIndex].cover;
-	aplist[apIndex].author = aplist[apIndex].artist;
-	aplist[apIndex].title = aplist[apIndex].name;
+	if (aplist[apIndex].pic) {
+
+	} else {
+		aplist[apIndex].pic = aplist[apIndex].cover;
+	}
+	if (aplist[apIndex].author) {
+
+	} else {
+		aplist[apIndex].author = aplist[apIndex].artist;
+	}
+	if (aplist[apIndex].title) {
+
+	} else {
+		aplist[apIndex].title = aplist[apIndex].name;
+	}
 }
 
 // wangPalyer
@@ -90,7 +102,7 @@ if ((top.location != self.location)) {
 		$cover = $('.cover', $player),
 		$songTime = $(".time", $player),
 		$songList = $('.song-list .list', $player);
-	$albumList = $('.album-list', $player),
+		$albumList = $('.album-list', $player),
 		$songFrom = $('.player .artist', $player),
 		$songFrom1 = $('.player .artist1', $player),
 		$songFrom2 = $('.player .moshi', $player),
