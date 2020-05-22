@@ -276,7 +276,11 @@ function ap2Init() {
             url: api + '?server=netease&type=playlist&id=601142810',
             success: function (list) {
                 neteaseFlag = false;
-                var array = JSON.parse(list);
+                try {
+                    var array = JSON.parse(list);
+                } catch (e) {
+                    var array = list;
+                }
                 if (array.length > 0) {
                     ap2.list.clear();
                     ap2.list.add(array);
@@ -296,13 +300,22 @@ function ap3Init() {
             url: api + '?server=netease&type=playlist&id=26462279',
             success: function (list) {
                 loveFlag = false;
-                var array = JSON.parse(list);
+                try {
+                    var array = JSON.parse(list);
+                } catch (e) {
+                    var array = list;
+                }
                 // 获取QQ音乐我喜欢的音乐列表
                 $.ajax({
                     url: api + '?server=tencent&type=playlist&id=6804330872',
                     success: function (data) {
                         if (array.length > 0) {
-                            array = array.concat(JSON.parse(data));
+                            try {
+                                var array2 = JSON.parse(data);
+                            } catch (e) {
+                                var array2 = data;
+                            }
+                            array = array.concat(array2);
                             ap3.list.clear();
                             ap3.list.add(array);
                         } else {
@@ -342,7 +355,11 @@ function search(btn) {
         url: url,
         success: function (list) {
             serachFlag = false;
-            var array = JSON.parse(list);
+            try {
+                var array = JSON.parse(list);
+            } catch (e) {
+                var array = list;
+            }
             // console.log(url);
             // console.log(array);
             if (array.length > 0) {
@@ -367,7 +384,11 @@ function neteaseHot(btn) {
     $.ajax({
         url: api + '?server=netease&type=playlist&id=3778678',
         success: function (list) {
-            var array = JSON.parse(list);
+            try {
+                var array = JSON.parse(list);
+            } catch (e) {
+                var array = list;
+            }
             // console.log(url);
             // console.log(array);
             if (array.length > 0) {
