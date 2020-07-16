@@ -19,20 +19,6 @@ var os = function () {
 }();
 // console.log(os);
 
-const aplayer = new APlayer({
-    container: document.getElementById('aplayer'),
-    fixed: true,
-    lrcType: 3,
-    order: 'random',
-    theme: '#000000',
-    audio: getLove()
-});
-
-if (!os.isPc) {
-    aplayer.lrc.toggle();
-    $(".aplayer-icon-lrc").addClass("aplayer-icon-lrc-inactivity");
-}
-
 // Animate
 $.fn.extend({
     animateCss: function (animationName, callback) {
@@ -153,6 +139,20 @@ function back2() {
 
 // window.setTimeout(back, 1500);
 back2();
+
+const aplayer = new APlayer({
+    container: document.getElementById('aplayer'),
+    fixed: true,
+    lrcType: 3,
+    order: 'random',
+    theme: '#000000',
+    audio: getLove()
+});
+
+if (!os.isPc) {
+    aplayer.lrc.toggle();
+    $(".aplayer-icon-lrc").addClass("aplayer-icon-lrc-inactivity");
+}
 
 // 新建组件
 var myDanmakuTpl = Vue.extend({
