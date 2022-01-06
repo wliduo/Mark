@@ -297,7 +297,8 @@ function ap2Init() {
 function ap3Init() {
     if (ap3.list.audios.length <= 0) {
         $.ajax({
-            url: api + '?server=netease&type=playlist&id=26462279',
+            // url: api + '?server=netease&type=playlist&id=26462279',
+            url: api + '?server=netease&type=playlist&id=6835458757',
             success: function (list) {
                 loveFlag = false;
                 try {
