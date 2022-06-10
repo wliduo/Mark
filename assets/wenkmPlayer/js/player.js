@@ -285,7 +285,7 @@ if ((top.location != self.location)) {
 	}
 
 	var cicleTime = null;
-	$cover.html('<img id="headImage" src="https://cdn.jsdelivr.net/gh/wliduo/CDN@master/avatar/01_thn.png">');
+	$cover.html('<img id="headImage" src="https://cdn.dolyw.com/avatar/01_thn.png">');
 	$songName.html('<a style="color:#f00">初始化失败</a>');
 	$songFrom.html('<a href="https://dolyw.com" title="随心" target="_blank" style="color:#f00">随心</a>');
 	$songFrom1.html('<a style="color:#f00">音乐播放器</a>');
@@ -784,7 +784,7 @@ function netmusic() {
 		setTimeout(function () {
 			$(".myhk_pjax_loading_frame,.myhk_pjax_loading").hide();
 		}, 800);
-		coverImg.src = "https://cdn.jsdelivr.net/gh/wliduo/CDN@master/avatar/01_thn.png";
+		coverImg.src = "https://cdn.dolyw.com/avatar/01_thn.png";
 		setTimeout(function () {
 			wenkmTips.show(aplist[songId].author + ' - ' + aplist[songId].title + ' - 图片获取失败');
 		}, 4000);

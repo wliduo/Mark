@@ -33,15 +33,15 @@ function getElementStyle(obj, attr) {
 }
 
 var imgUrlArray = [
-    'https://cdn.jsdelivr.net/gh/wliduo/CDN@master/wallpaper/201911/20191101005.jpg',
-    'https://cdn.jsdelivr.net/gh/wliduo/CDN@master/wallpaper/201911/20191107005.jpg',
-    'https://cdn.jsdelivr.net/gh/wliduo/CDN@master/wallpaper/201911/20191107010.jpg',
+    'https://cdn.dolyw.com/wallpaper/201911/20191101005.jpg',
+    'https://cdn.dolyw.com/wallpaper/201911/20191107005.jpg',
+    'https://cdn.dolyw.com/wallpaper/201911/20191107010.jpg',
     'https://dolyw.gitee.io/reader/Image/201810/normal/20010.png',
     'https://dolyw.gitee.io/reader/Image/201811/normal/01005.png',
     'https://dolyw.gitee.io/reader/Image/201811/normal/02015.png',
     'https://dolyw.gitee.io/reader/Image/201811/normal/04040.png',
     'https://dolyw.gitee.io/reader/Image/201811/normal/05025.png',
-    'https://cdn.jsdelivr.net/gh/wliduo/CDN@master/wallpaper/201911/20191109005.png'
+    'https://cdn.dolyw.com/wallpaper/201911/20191109005.png'
 ];
 
 var randomIndex = 2;
@@ -70,7 +70,7 @@ function switchBg() {
     img.src = imgUrlArray[randomIndex];
     img.onload = function () {
         $("#bg").hide();
-        if (imgUrlArray[randomIndex] == "https://cdn.jsdelivr.net/gh/wliduo/CDN@master/wallpaper/201911/20191109005.png") {
+        if (imgUrlArray[randomIndex] == "https://cdn.dolyw.com/wallpaper/201911/20191109005.png") {
             document.getElementById('bg').style.backgroundPosition = "center center";
         } else {
             document.getElementById('bg').style.backgroundPosition = "center 0";
@@ -183,7 +183,7 @@ if (isMobile()) {
 img.src = imgUrl;
 img.onload = function () {
     $("#bg").hide();
-    if (imgUrl == "https://cdn.jsdelivr.net/gh/wliduo/CDN@master/wallpaper/201911/20191109005.png") {
+    if (imgUrl == "https://cdn.dolyw.com/wallpaper/201911/20191109005.png") {
         document.getElementById('bg').style.backgroundPosition = "center center";
     } else {
         document.getElementById('bg').style.backgroundPosition = "center 0";
@@ -204,7 +204,7 @@ if (!isMobile()) {
     $("#head").show();
     try {
         // 加载wenkmPlayerc
-        $.ajax({ url: 'https://cdn.jsdelivr.net/gh/wliduo/Mark@master/assets/wenkmPlayer/js/player.js?v=123', dataType: "script", cache: true, async: false });
+        $.ajax({ url: 'https://mark.dolyw.com/assets/wenkmPlayer/js/player.js?v=123', dataType: "script", cache: true, async: false });
     } catch (err) {
         console.log('[Error] JQuery is not defined.')
     } finally {
